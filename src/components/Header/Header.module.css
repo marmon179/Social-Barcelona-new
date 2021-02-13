@@ -1,0 +1,13 @@
+.header {
+    display: grid;
+    align-items: center;
+    background-image: url('https://www.underconsideration.com/brandnew/archives/fc_barcelona_patterns_01.jpg');
+
+    grid-area: header;
+    grid-template-columns: 9fr 3fr;
+}
+
+.header img {
+    width: 60px;
+    padding: 10px;
+}

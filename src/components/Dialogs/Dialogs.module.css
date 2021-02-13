@@ -1,0 +1,33 @@
+.dialogsWrapper {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+
+}
+
+.dialog {
+    margin: 10px;
+    padding: 10px;
+}
+
+.messageDialog {
+    margin: 10px;
+    padding: 10px;
+}
+.dialogName {
+    display: block;
+    padding: 10px 10px 10px 20px;
+    text-decoration: none;
+    color: #fff;
+}
+.dialogName:hover {
+    background-color: rgba(74, 118, 168, 0.27);
+    border-radius: 5px 5px 5px 5px;
+}
+.activeLink {
+    background-color: rgba(74, 118, 168, 0.27);
+    border-radius: 5px 5px 5px 5px;
+}
+.message {
+    padding: 10px 10px 10px 20px;
+
+}

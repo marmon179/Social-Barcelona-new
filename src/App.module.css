@@ -1,0 +1,25 @@
+.wrapper {
+    display: grid;
+    width: 1280px;
+    margin: 0 auto;
+
+    grid-gap: 20px;
+    grid-template-areas:
+    'header header'
+    'navbar content';
+
+    grid-template-rows: 80px 1fr;
+    grid-template-columns: 30% 70%;
+
+}
+.appWrapperContent {
+    display: flex;
+    padding: 10px;
+    background: url('https://www.fcbarcelona.com/resources/v2.15.1-3805/i/bg-elements/barca-today-tablet.jpg');
+    color: #FDC52C;
+}
+
+
+
+
+
