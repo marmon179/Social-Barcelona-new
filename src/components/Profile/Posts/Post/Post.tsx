@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Post.module.css';
 import {ProfilePhoto} from './ProfilePhoto/Post';
 
-type MessageType = {
+export type MessageType = {
     message: string
     id: number
 }
