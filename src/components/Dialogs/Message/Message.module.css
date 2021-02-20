@@ -1,0 +1,11 @@
+.message {
+    display: flex;
+    padding: 10px 10px 10px 20px;
+    background-color: rgba(74, 118, 168, 0.27);
+    border-radius: 5px 5px 5px 5px;
+    min-width: 100px;
+    max-width: 200px;
+    word-wrap: break-word;
+    margin: 10px 10px 10px 10px;
+
+}
