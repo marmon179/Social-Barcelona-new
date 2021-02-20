@@ -1,16 +1,12 @@
 import React from 'react';
 import styles from './Posts.module.css';
 import Post from './Post/Post';
+import {ProfilePageType} from '../../../index';
 
-const Posts = () => {
 
-    let dialogsData = [
-        {id: 1, message: 'Hello people!!!!'},
-        {id: 2, message: 'How are you?'},
-        {id: 3, message: 'Very nice!!!'},
-    ]
+const Posts: React.FC<ProfilePageType> = (props) => {
 
-    let elementsDialogs = dialogsData.map(d => <Post message={d.message} id={d.id}/>)
+    let elementsDialogs = props.dialogsData.map(d => <Post message={d.message} id={d.id}/>)
     return (
         <div className={styles.postList}>
             {elementsDialogs}

@@ -1,13 +1,9 @@
 import React from 'react';
 import s from './Dialogs.module.css'
-import {DialogItem, DialogsType} from './DialogItem/DialogItem';
+import {DialogItem,} from './DialogItem/DialogItem';
 import {Message} from './Message/Message';
-import {MessageType} from '../Profile/Posts/Post/Post';
+import {DialogPageType} from '../../index';
 
-export type DialogPageType = {
-    dialogs: Array<DialogsType>
-    messages: Array<MessageType>
-}
 
 const Dialogs: React.FC<DialogPageType> = (props) => {
     let elementDialogs = props.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)

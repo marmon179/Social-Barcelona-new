@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from './Post.module.css';
 import {ProfilePhoto} from './ProfilePhoto/Post';
+import {MessageType} from '../../../../index';
 
-export type MessageType = {
-    message: string
-    id: number
-}
+
 
 const Post: React.FC<MessageType> = (props) => (
     <div className={styles.postItem}>
