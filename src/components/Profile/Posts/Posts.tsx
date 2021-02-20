@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Posts.module.css';
 import Post from './Post/Post';
-import {ProfilePageType} from '../../../index';
+import {ProfilePageType} from '../../../redux/state/state';
 
 
 const Posts: React.FC<ProfilePageType> = (props) => {

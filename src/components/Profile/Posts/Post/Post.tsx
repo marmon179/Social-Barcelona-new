@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Post.module.css';
-import {ProfilePhoto} from './ProfilePhoto/Post';
-import {MessageType} from '../../../../index';
+import {ProfilePhoto} from './ProfilePhoto/ProfilePhoto';
+import {MessageType} from '../../../../redux/state/state';
 
 
 

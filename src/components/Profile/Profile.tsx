@@ -1,6 +1,6 @@
 import React from 'react';
 import Posts from './Posts/Posts';
-import {ProfilePageType} from '../../index';
+import {ProfilePageType} from '../../redux/state/state';
 
 
 
