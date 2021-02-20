@@ -10,14 +10,15 @@ type DialogsType = {
 
 type MessageType = {
     message: string
+    id: number
 }
 
 const DialogItem: React.FC<DialogsType> = (props) => {
     let path = '/dialogs/' + props.id
     return (
-        <div >
+        <div>
             <NavLink to={path} className={s.dialogName} activeClassName={styles.activeLink}>{props.name}</NavLink>
-        </div >
+        </div>
     )
 }
 
@@ -29,21 +30,32 @@ const Message: React.FC<MessageType> = (props) => {
     )
 }
 
-const Dialogs = () => (
-    <div className={s.dialogsWrapper}>
-        <div className={s.dialog}>
-            <DialogItem name='Sascha' id={1}/>
-            <DialogItem name='Maksim' id={2}/>
-            <DialogItem name='Katia' id={3}/>
-        </div>
+const Dialogs = () => {
 
-        <div className={s.messageDialog}>
-            <Message message={'Hello'}/>
-            <Message message={'Hi'}/>
-            <Message message={'HI!!!'}/>
-        </div>
-    </div>
+    let dialogs = [
+        {id: 1, name: 'Sascha'},
+        {id: 2, name: 'Maksim'},
+        {id: 3, name: 'Katia'},
+    ]
 
-);
+    let messages = [
+        {id: 1, message: 'Hello'},
+        {id: 2, message: 'Hi!'},
+        {id: 3, message: 'hello'},
+    ]
+
+    let elementDialogs = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
+    let elementsMessages = messages.map(m => <Message message={m.message} id={m.id}/>)
+    return (
+        <div className={s.dialogsWrapper}>
+            <div className={s.dialog}>
+                {elementDialogs}
+            </div>
+
+            <div className={s.messageDialog}>
+                {elementsMessages}
+            </div>
+        </div>)
+};
 
 export default Dialogs;

@@ -2,23 +2,31 @@ import React from 'react';
 import styles from './Posts.module.css';
 import Post from './Post/Post';
 
-const Posts = () => (
-    <div className={styles.postList}>
-        <Post message={'Hello people!!!!'}/>
-        <Post message={'How are you?'}/>
-        <Post message={'Very nice!!!'}/>
-        <div >
+const Posts = () => {
 
-            <div>
-                <textarea> </textarea>
-            </div>
+    let dialogsData = [
+        {id: 1, message: 'Hello people!!!!'},
+        {id: 2, message: 'How are you?'},
+        {id: 3, message: 'Very nice!!!'},
+    ]
 
+    let elementsDialogs = dialogsData.map(d => <Post message={d.message} id={d.id}/>)
+    return (
+        <div className={styles.postList}>
+            {elementsDialogs}
             <div>
-                <button>Add post</button>
+
+                <div>
+                    <textarea> </textarea>
+                </div>
+
+                <div>
+                    <button>Add post</button>
+                </div>
             </div>
         </div>
-    </div>
 
-);
+    )
+};
 
 export default Posts;

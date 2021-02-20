@@ -4,6 +4,7 @@ import {ProfilePhoto} from './ProfilePhoto/Post';
 
 type MessageType = {
     message: string
+    id: number
 }
 
 const Post: React.FC<MessageType> = (props) => (
