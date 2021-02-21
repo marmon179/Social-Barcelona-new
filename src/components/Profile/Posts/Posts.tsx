@@ -9,9 +9,10 @@ const Posts: React.FC<ProfilePageType> = (props) => {
     let elementsDialogs = props.dialogsData.map(d => <Post message={d.message} id={d.id}/>)
     return (
         <div className={styles.postList}>
-            {elementsDialogs}
-            <div>
-
+            <div className={styles.wrapperDialogs}>
+                {elementsDialogs}
+            </div>
+            <div className={styles.wrapperTextarea}>
                 <div>
                     <textarea> </textarea>
                 </div>
