@@ -1,18 +1,26 @@
-.dialogsWrapper {
-    display: flex;
-}
-
 .wrapper {
     display: flex;
     flex-direction: column;
+
 }
 
 .wrapperImage {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+}
+
+.wrapperImage img {
+    width: 896px;
+
 
 }
-.wrapperImage img {
-    width: 880px;
-
+.wrapperWrapper {
+    display: flex;
+    flex-basis: 500px;
+    margin: 10px 0 0 0;
+    background: url('https://www.fcbarcelona.com/resources/v2.15.1-3805/i/bg-elements/barca-today-tablet@x2.jpg');
+}
+.dialogsWrapper {
+    display: flex;
+    margin: 0 0 0 10px;
 }

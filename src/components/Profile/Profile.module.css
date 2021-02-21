@@ -1,4 +1,4 @@
-/*.wrapperDialogs {*/
-/*    display: flex;*/
-/*    */
-/*}*/
+.wrapperDialogs {
+    display: flex;
+    background: url('https://www.fcbarcelona.com/resources/v2.15.1-3805/i/bg-elements/barca-today-tablet@x2.jpg');
+}
