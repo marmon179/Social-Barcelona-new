@@ -1,13 +1,21 @@
 import React from 'react';
 import styles from './Dialogs.module.css'
-import {DialogItem,} from './DialogItem/DialogItem';
-import {Message} from './Message/Message';
-import {DialogPageType} from '../../redux/state/state';
+import {DialogItem, DialogsType,} from './DialogItem/DialogItem';
+import {Message, MessageType} from './Message/Message';
 
+type DialogPageType = {
+    dialogs: Array<DialogsType>
+    messages: Array<MessageType>
+}
 
 const Dialogs: React.FC<DialogPageType> = (props) => {
     let elementDialogs = props.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
     let elementsMessages = props.messages.map(m => <div><Message message={m.message} id={m.id}/></div>)
+
+    let newPostElement = React.createRef<HTMLTextAreaElement>()
+    let addPost = () => {
+        alert(newPostElement.current?.value)
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -24,6 +32,14 @@ const Dialogs: React.FC<DialogPageType> = (props) => {
 
                     <div>
                         {elementsMessages}
+                    </div>
+                </div>
+                <div className={styles.wrapperTextarea}>
+                    <div>
+                        <textarea ref={newPostElement}></textarea>
+                    </div>
+                    <div>
+                        <button onClick={addPost}>Add post</button>
                     </div>
                 </div>
             </div>

@@ -1,19 +1,20 @@
-export type RootStateType = {
+type RootStateType = {
     dialogsPage: DialogPageType
     profilePage: ProfilePageType
 }
-export type ProfilePageType = {
+type ProfilePageType = {
     dialogsData: Array<MessageType>
+
 }
-export type DialogPageType = {
+type DialogPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
 }
-export type MessageType = {
+type MessageType = {
     message: string
     id: number
 }
-export type DialogsType = {
+type DialogsType = {
     name: string,
     id: number,
 }
@@ -38,4 +39,12 @@ export let state: RootStateType = {
             {id: 3, message: 'hello'},
         ]
     }
+}
+
+export const addPost = (postMessage: string) => {
+    const newPost: MessageType = {
+        id: 4,
+        message: postMessage
+    }
+    state.profilePage.dialogsData.push(newPost)
 }

@@ -11,16 +11,23 @@
 
 .wrapperImage img {
     width: 896px;
-
-
 }
+
 .wrapperWrapper {
     display: flex;
+    flex-direction: column;
     flex-basis: 500px;
     margin: 10px 0 0 0;
     background: url('https://www.fcbarcelona.com/resources/v2.15.1-3805/i/bg-elements/barca-today-tablet@x2.jpg');
 }
+
 .dialogsWrapper {
     display: flex;
+    margin: 0 0 0 10px;
+}
+
+.wrapperTextarea {
+    display: flex;
+    flex-direction: column;
     margin: 0 0 0 10px;
 }

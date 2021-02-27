@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './Post.module.css';
 import {ProfilePhoto} from './ProfilePhoto/ProfilePhoto';
-import {MessageType} from '../../../../redux/state/state';
 
-
+export type MessageType = {
+    message: string
+    id: number
+}
 
 const Post: React.FC<MessageType> = (props) => (
     <div className={styles.postItem}>
