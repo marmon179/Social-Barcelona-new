@@ -1,4 +1,7 @@
-import rerenderEntireTree from '../../render';
+let onChange = () => {
+    console.log('State changed')
+}
+
 
 export type RootStateType = {
     dialogsPage: DialogPageType
@@ -54,12 +57,12 @@ export const addPost = () => {
     }
     state.profilePage.dialogsData.push(newPost)
     state.profilePage.messageForNewPost = ''
-    rerenderEntireTree(state)
+    onChange()
 }
 
 export const updateNewPostText = (newText: string) => {
     state.profilePage.messageForNewPost = newText
-    rerenderEntireTree(state)
+    onChange()
 }
 
 export const addPostDialog = () => {
@@ -69,10 +72,14 @@ export const addPostDialog = () => {
     }
     state.dialogsPage.messages.push(newPost)
     state.dialogsPage.messageForNewPostDialog = ''
-    rerenderEntireTree(state)
+    onChange()
 }
 
 export const updateNewPostTextDialogs = (newText: string) => {
     state.dialogsPage.messageForNewPostDialog = newText
-    rerenderEntireTree(state)
+    onChange()
+}
+
+export const subscribe = (callback: () => void) => {
+    onChange = callback
 }
