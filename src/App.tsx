@@ -5,22 +5,29 @@ import Navbar from './components/./Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {state, addPost} from './redux/state/state';
+import {addPost, addPostDialog, state, updateNewPostText, updateNewPostTextDialogs} from './redux/state/state';
 
 
 function App() {
-    let dialogs = state.dialogsPage.dialogs
-    let messages = state.dialogsPage.messages
-    let dialogsData = state.profilePage.dialogsData
+    const dialogs = state.dialogsPage.dialogs
+    const messages = state.dialogsPage.messages
+    const messageForNewPostDialog = state.dialogsPage.messageForNewPostDialog
+    const dialogsData = state.profilePage.dialogsData
+    const newPostText = state.profilePage.messageForNewPost
     return (
         <BrowserRouter>
             <div className={s.wrapper}>
                 <Header/>
                 <Navbar/>
                 <div className={s.appWrapperContent}>
-                    <Route path={'/profile'} render={() => <Profile dialogsData={dialogsData} addPost={addPost}/>}/>
+                    <Route path={'/profile'}
+                           render={() => <Profile dialogsData={dialogsData} newPostText={newPostText} addPost={addPost}
+                                                  updateNewPostText={updateNewPostText}/>}/>
                     <Route path={'/dialogs'}
-                           render={() => <Dialogs dialogs={dialogs} messages={messages}/>}/>
+                           render={() => <Dialogs dialogs={dialogs} messages={messages}
+                                                  messageForNewPostDialog={messageForNewPostDialog}
+                                                  addPostDialog={addPostDialog}
+                                                  updateNewPostTextDialogs={updateNewPostTextDialogs}/>}/>
                 </div>
 
             </div>

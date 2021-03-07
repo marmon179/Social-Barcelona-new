@@ -1,21 +1,24 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import styles from './Posts.module.css';
 import Post, {MessageType} from './Post/Post';
 
 type ProfilePageType = {
     dialogsData: Array<MessageType>
+    newPostText: string
     addPost: (postMessage: string) => void
+    updateNewPostText: (newText: string) => void
 }
 
 const Posts: React.FC<ProfilePageType> = (props) => {
-    let elementsDialogs = props.dialogsData.map(d => <Post message={d.message} id={d.id}/>)
+    const elementsDialogs = props.dialogsData.map(d => <Post key={d.id} message={d.message} id={d.id}/>)
 
-    let newPostElement = React.createRef <HTMLTextAreaElement>()
+    const addPost = () => {
+        props.addPost(props.newPostText)
 
-    let addPost = () => {
-        if (newPostElement.current) {
-            props.addPost(newPostElement.current?.value)
-        }
+    }
+
+    const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        props.updateNewPostText(e.currentTarget.value)
 
     }
     return (
@@ -26,7 +29,7 @@ const Posts: React.FC<ProfilePageType> = (props) => {
             <div className={styles.wrapperTextarea}>
 
                 <div>
-                    <textarea ref={newPostElement}> </textarea>
+                    <textarea onChange={onPostChange} value={props.newPostText}> </textarea>
                 </div>
 
                 <div>

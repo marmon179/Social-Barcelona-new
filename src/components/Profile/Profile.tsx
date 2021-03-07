@@ -5,7 +5,9 @@ import {MessageType} from './Posts/Post/Post';
 
 type ProfilePageType = {
     dialogsData: Array<MessageType>
-    addPost: (postMessage: string) => void
+    newPostText: string
+    addPost: () => void
+    updateNewPostText: (newText: string) => void
 }
 
 const Profile: React.FC<ProfilePageType> = (props) => {
@@ -17,7 +19,8 @@ const Profile: React.FC<ProfilePageType> = (props) => {
                         alt="Barca"/>
                 </div>
                 <div className={styles.wrapperDialogs}>
-                    <Posts dialogsData={props.dialogsData} addPost={props.addPost}/>
+                    <Posts dialogsData={props.dialogsData} newPostText={props.newPostText} addPost={props.addPost}
+                           updateNewPostText={props.updateNewPostText}/>
                 </div>
             </div>
 
