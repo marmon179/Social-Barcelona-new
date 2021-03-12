@@ -5,10 +5,20 @@ import Navbar from './components/./Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {addPost, addPostDialog, state, updateNewPostText, updateNewPostTextDialogs} from './redux/state/state';
+import {StoreType} from './redux/state/state';
 
+type PropsType = {
+    store: StoreType
+    addPost: () => void
+    updateNewPostText: (newText: string) => void
+    addPostDialog: () => void
+    updateNewPostTextDialogs: (newText: string) => void
 
-function App() {
+}
+
+function App(props: PropsType) {
+    const state = props.store.getState()
+
     const dialogs = state.dialogsPage.dialogs
     const messages = state.dialogsPage.messages
     const messageForNewPostDialog = state.dialogsPage.messageForNewPostDialog
@@ -21,13 +31,14 @@ function App() {
                 <Navbar/>
                 <div className={s.appWrapperContent}>
                     <Route path={'/profile'}
-                           render={() => <Profile dialogsData={dialogsData} newPostText={newPostText} addPost={addPost}
-                                                  updateNewPostText={updateNewPostText}/>}/>
+                           render={() => <Profile dialogsData={dialogsData} newPostText={newPostText}
+                                                  addPost={props.addPost}
+                                                  updateNewPostText={props.updateNewPostText}/>}/>
                     <Route path={'/dialogs'}
                            render={() => <Dialogs dialogs={dialogs} messages={messages}
                                                   messageForNewPostDialog={messageForNewPostDialog}
-                                                  addPostDialog={addPostDialog}
-                                                  updateNewPostTextDialogs={updateNewPostTextDialogs}/>}/>
+                                                  addPostDialog={props.addPostDialog}
+                                                  updateNewPostTextDialogs={props.updateNewPostTextDialogs}/>}/>
                 </div>
 
             </div>
