@@ -2,12 +2,14 @@ import React from 'react';
 import Posts from './Posts/Posts';
 import styles from './Profile.module.css'
 import {MessageType} from './Posts/Post/Post';
+import {ActionsTypes} from '../../redux/state/state';
 
 type ProfilePageType = {
     dialogsData: Array<MessageType>
     newPostText: string
     addPost: () => void
     updateNewPostText: (newText: string) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 const Profile: React.FC<ProfilePageType> = (props) => {
@@ -20,7 +22,7 @@ const Profile: React.FC<ProfilePageType> = (props) => {
                 </div>
                 <div className={styles.wrapperDialogs}>
                     <Posts dialogsData={props.dialogsData} newPostText={props.newPostText} addPost={props.addPost}
-                           updateNewPostText={props.updateNewPostText}/>
+                           updateNewPostText={props.updateNewPostText} dispatch={props.dispatch}/>
                 </div>
             </div>
 

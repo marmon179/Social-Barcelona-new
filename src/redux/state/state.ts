@@ -1,8 +1,3 @@
-// let onChange = () => {
-//     console.log('State changed')
-// }
-
-
 export type RootStateType = {
     dialogsPage: DialogPageType
     profilePage: ProfilePageType
@@ -34,8 +29,20 @@ export type StoreType = {
     addPostDialog: () => void
     updateNewPostTextDialogs: (newText: string) => void
     subscribe: (callback: () => void) => void
+    dispatch: (action: ActionsTypes) => void
 
 }
+
+type AddPostActionType = {
+    type: 'ADD-POST'
+}
+
+type UpdateNewPostTextActionType = {
+    type: 'UPDATE-NEW-POST-TEXT'
+    newText: string
+}
+
+export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType
 export const store: StoreType = {
     _state: {
         profilePage: {
@@ -60,12 +67,14 @@ export const store: StoreType = {
             messageForNewPostDialog: '',
         }
     },
-    getState() {
-        return this._state
-    },
     _onChange() {
         console.log('State changed')
     },
+
+    getState() {
+        return this._state
+    },
+
     addPost() {
         const newPost: MessageType = {
             id: 4,
@@ -79,6 +88,7 @@ export const store: StoreType = {
         this._state.profilePage.messageForNewPost = newText
         this._onChange()
     },
+
     addPostDialog() {
         const newPost: MessageType = {
             id: 4,
@@ -94,62 +104,24 @@ export const store: StoreType = {
     },
     subscribe(callback) {
         this._onChange = callback
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            const newPost: MessageType = {
+                id: 4,
+                message: this._state.profilePage.messageForNewPost
+            }
+            this._state.profilePage.dialogsData.push(newPost)
+            this._state.profilePage.messageForNewPost = ''
+            this._onChange()
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.dialogsPage.messageForNewPostDialog = action.newText
+            this._onChange()
+        }
+
     }
 }
-// export const state: RootStateType = {
-//     profilePage: {
-//         dialogsData: [
-//             {id: 1, message: 'Hello people!!!!'},
-//             {id: 2, message: 'How are you?'},
-//             {id: 3, message: 'Very nice!!!'},
-//         ],
-//         messageForNewPost: ''
-//     },
-//     dialogsPage: {
-//         dialogs: [
-//             {id: 1, name: 'Sascha'},
-//             {id: 2, name: 'Maksim'},
-//             {id: 3, name: 'Katia'},
-//         ],
-//         messages: [
-//             {id: 1, message: 'Hello'},
-//             {id: 2, message: 'Hi!'},
-//             {id: 3, message: 'hello'},
-//         ],
-//         messageForNewPostDialog: '',
-//     }
-// }
 
-// export const addPost = () => {
-//     const newPost: MessageType = {
-//         id: 4,
-//         message: state.profilePage.messageForNewPost
-//     }
-//     state.profilePage.dialogsData.push(newPost)
-//     state.profilePage.messageForNewPost = ''
-//     onChange()
-// }
 
-// export const updateNewPostText = (newText: string) => {
-//     state.profilePage.messageForNewPost = newText
-//     onChange()
-// }
 
-// export const addPostDialog = () => {
-//     const newPost: MessageType = {
-//         id: 4,
-//         message: state.dialogsPage.messageForNewPostDialog
-//     }
-//     state.dialogsPage.messages.push(newPost)
-//     state.dialogsPage.messageForNewPostDialog = ''
-//     onChange()
-// }
-
-// export const updateNewPostTextDialogs = (newText: string) => {
-//     state.dialogsPage.messageForNewPostDialog = newText
-//     onChange()
-// }
-
-// export const subscribe = (callback: () => void) => {
-//     onChange = callback
-// }
