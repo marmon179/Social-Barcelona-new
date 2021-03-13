@@ -1,7 +1,8 @@
 import React, {ChangeEvent} from 'react';
 import styles from './Posts.module.css';
 import Post, {MessageType} from './Post/Post';
-import {ActionsTypes, addPostAC, UpdateNewPostTextAction} from '../../../redux/state/state';
+import {addPostAC, UpdateNewPostTextAction} from '../../../redux/state/profile-reducer';
+import {ActionsTypes} from '../../../redux/state/state';
 
 type ProfilePageType = {
     dialogsData: Array<MessageType>
@@ -19,7 +20,7 @@ const Posts: React.FC<ProfilePageType> = (props) => {
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const text = e.currentTarget.value
-        props.dispatch(UpdateNewPostTextAction( text))
+        props.dispatch(UpdateNewPostTextAction(text))
     }
     return (
         <div className={styles.postList}>

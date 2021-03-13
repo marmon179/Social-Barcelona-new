@@ -1,3 +1,6 @@
+import profileReducer, {addPostAC, UpdateNewPostTextAction} from './profile-reducer';
+import dialogsReducer, {addPostDialogAC, UpdateNewPostTextDialogAction} from './dialogs-reducer';
+
 export type RootStateType = {
     dialogsPage: DialogPageType
     profilePage: ProfilePageType
@@ -35,14 +38,6 @@ export type ActionsTypes =
     ReturnType<typeof addPostDialogAC> |
     ReturnType<typeof UpdateNewPostTextDialogAction>
 
-export const addPostAC = () => ({type: 'ADD-POST'} as const)
-export const UpdateNewPostTextAction = (newText: string) => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText} as const)
-
-export const addPostDialogAC = () => ({type: 'ADD_POST_DIALOG'} as const)
-export const UpdateNewPostTextDialogAction = (newText: string) => ({
-    type: 'UPDATE_NEW_POST_TEXT_DIALOG',
-    newText: newText
-} as const)
 
 export const store: StoreType = {
     _state: {
@@ -81,30 +76,11 @@ export const store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            const newPost: MessageType = {
-                id: 4,
-                message: this._state.profilePage.messageForNewPost
-            }
-            this._state.profilePage.dialogsData.push(newPost)
-            this._state.profilePage.messageForNewPost = ''
-            this._onChange()
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.messageForNewPost = action.newText
-            this._onChange()
-        } else if (action.type === 'ADD_POST_DIALOG') {
-            const newPost: MessageType = {
-                id: 4,
-                message: this._state.dialogsPage.messageForNewPostDialog
-            }
-            this._state.dialogsPage.messages.push(newPost)
-            this._state.dialogsPage.messageForNewPostDialog = ''
-            this._onChange()
-        } else if (action.type === 'UPDATE_NEW_POST_TEXT_DIALOG') {
-            this._state.dialogsPage.messageForNewPostDialog = action.newText
-            this._onChange()
-        }
 
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+
+        this._onChange()
     }
 }
 
