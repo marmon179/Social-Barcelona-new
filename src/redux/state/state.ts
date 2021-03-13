@@ -24,7 +24,6 @@ export type StoreType = {
     _state: RootStateType
     getState: () => RootStateType
     _onChange: () => void
-    updateNewPostText: (newText: string) => void
     addPostDialog: () => void
     updateNewPostTextDialogs: (newText: string) => void
     subscribe: (callback: () => void) => void
@@ -32,14 +31,10 @@ export type StoreType = {
 
 }
 
-type UpdateNewPostTextActionType = {
-    type: 'UPDATE-NEW-POST-TEXT'
-    newText: string
-}
+export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof UpdateNewPostTextAction>
 
-export type ActionsTypes = ReturnType<typeof addPostAC> | UpdateNewPostTextActionType
-
-export const addPostAC = () => ({type: 'ADD-POST'} as  const)
+export const addPostAC = () => ({type: 'ADD-POST'} as const)
+export const UpdateNewPostTextAction = (newText: string) => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText} as const)
 
 export const store: StoreType = {
     _state: {
@@ -73,12 +68,6 @@ export const store: StoreType = {
         return this._state
     },
 
-
-    updateNewPostText(newText: string) {
-        this._state.profilePage.messageForNewPost = newText
-        this._onChange()
-    },
-
     addPostDialog() {
         const newPost: MessageType = {
             id: 4,
@@ -106,7 +95,7 @@ export const store: StoreType = {
             this._state.profilePage.messageForNewPost = ''
             this._onChange()
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.dialogsPage.messageForNewPostDialog = action.newText
+            this._state.profilePage.messageForNewPost = action.newText
             this._onChange()
         }
 

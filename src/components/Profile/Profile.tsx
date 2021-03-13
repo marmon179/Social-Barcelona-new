@@ -7,7 +7,6 @@ import {ActionsTypes} from '../../redux/state/state';
 type ProfilePageType = {
     dialogsData: Array<MessageType>
     newPostText: string
-    updateNewPostText: (newText: string) => void
     dispatch: (action: ActionsTypes) => void
 }
 
@@ -21,7 +20,8 @@ const Profile: React.FC<ProfilePageType> = (props) => {
                 </div>
                 <div className={styles.wrapperDialogs}>
                     <Posts dialogsData={props.dialogsData} newPostText={props.newPostText}
-                           updateNewPostText={props.updateNewPostText} dispatch={props.dispatch}/>
+                           // updateNewPostText={props.updateNewPostText}
+                           dispatch={props.dispatch}/>
                 </div>
             </div>
 

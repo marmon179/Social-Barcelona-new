@@ -12,10 +12,9 @@ let rerenderEntireTree = () => {
             <App store={store}
                  dispatch={store.dispatch.bind(store)}
 
-                 updateNewPostText={store.updateNewPostText.bind(store)}
-
                  addPostDialog={store.addPostDialog.bind(store)}
-                 updateNewPostTextDialogs={store.updateNewPostTextDialogs.bind(store)}/>,
+                 updateNewPostTextDialogs={store.updateNewPostTextDialogs.bind(store)}
+            />,
         </React.StrictMode>,
         document.getElementById('root')
     );
