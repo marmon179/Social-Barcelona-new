@@ -9,7 +9,6 @@ import {ActionsTypes, StoreType} from './redux/state/state';
 
 type PropsType = {
     store: StoreType
-    addPost: () => void
     updateNewPostText: (newText: string) => void
     addPostDialog: () => void
     updateNewPostTextDialogs: (newText: string) => void
@@ -34,8 +33,6 @@ function App(props: PropsType) {
                     <Route path={'/profile'}
                            render={() => <Profile dialogsData={dialogsData} newPostText={newPostText}
                                                   dispatch={props.dispatch}
-
-                                                  addPost={props.addPost}
 
                                                   updateNewPostText={props.updateNewPostText}/>}/>
                     <Route path={'/dialogs'}

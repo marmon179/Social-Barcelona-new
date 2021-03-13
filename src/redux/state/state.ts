@@ -24,7 +24,6 @@ export type StoreType = {
     _state: RootStateType
     getState: () => RootStateType
     _onChange: () => void
-    addPost: () => void
     updateNewPostText: (newText: string) => void
     addPostDialog: () => void
     updateNewPostTextDialogs: (newText: string) => void
@@ -33,16 +32,15 @@ export type StoreType = {
 
 }
 
-type AddPostActionType = {
-    type: 'ADD-POST'
-}
-
 type UpdateNewPostTextActionType = {
     type: 'UPDATE-NEW-POST-TEXT'
     newText: string
 }
 
-export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType
+export type ActionsTypes = ReturnType<typeof addPostAC> | UpdateNewPostTextActionType
+
+export const addPostAC = () => ({type: 'ADD-POST'} as  const)
+
 export const store: StoreType = {
     _state: {
         profilePage: {
@@ -75,15 +73,7 @@ export const store: StoreType = {
         return this._state
     },
 
-    addPost() {
-        const newPost: MessageType = {
-            id: 4,
-            message: this._state.profilePage.messageForNewPost
-        }
-        this._state.profilePage.dialogsData.push(newPost)
-        this._state.profilePage.messageForNewPost = ''
-        this._onChange()
-    },
+
     updateNewPostText(newText: string) {
         this._state.profilePage.messageForNewPost = newText
         this._onChange()
