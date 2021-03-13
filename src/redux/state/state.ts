@@ -24,17 +24,25 @@ export type StoreType = {
     _state: RootStateType
     getState: () => RootStateType
     _onChange: () => void
-    addPostDialog: () => void
-    updateNewPostTextDialogs: (newText: string) => void
     subscribe: (callback: () => void) => void
     dispatch: (action: ActionsTypes) => void
 
 }
 
-export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof UpdateNewPostTextAction>
+export type ActionsTypes =
+    ReturnType<typeof addPostAC> |
+    ReturnType<typeof UpdateNewPostTextAction> |
+    ReturnType<typeof addPostDialogAC> |
+    ReturnType<typeof UpdateNewPostTextDialogAction>
 
 export const addPostAC = () => ({type: 'ADD-POST'} as const)
 export const UpdateNewPostTextAction = (newText: string) => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText} as const)
+
+export const addPostDialogAC = () => ({type: 'ADD_POST_DIALOG'} as const)
+export const UpdateNewPostTextDialogAction = (newText: string) => ({
+    type: 'UPDATE_NEW_POST_TEXT_DIALOG',
+    newText: newText
+} as const)
 
 export const store: StoreType = {
     _state: {
@@ -68,19 +76,6 @@ export const store: StoreType = {
         return this._state
     },
 
-    addPostDialog() {
-        const newPost: MessageType = {
-            id: 4,
-            message: this._state.dialogsPage.messageForNewPostDialog
-        }
-        this._state.dialogsPage.messages.push(newPost)
-        this._state.dialogsPage.messageForNewPostDialog = ''
-        this._onChange()
-    },
-    updateNewPostTextDialogs(newText: string) {
-        this._state.dialogsPage.messageForNewPostDialog = newText
-        this._onChange()
-    },
     subscribe(callback) {
         this._onChange = callback
     },
@@ -96,6 +91,17 @@ export const store: StoreType = {
             this._onChange()
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.messageForNewPost = action.newText
+            this._onChange()
+        } else if (action.type === 'ADD_POST_DIALOG') {
+            const newPost: MessageType = {
+                id: 4,
+                message: this._state.dialogsPage.messageForNewPostDialog
+            }
+            this._state.dialogsPage.messages.push(newPost)
+            this._state.dialogsPage.messageForNewPostDialog = ''
+            this._onChange()
+        } else if (action.type === 'UPDATE_NEW_POST_TEXT_DIALOG') {
+            this._state.dialogsPage.messageForNewPostDialog = action.newText
             this._onChange()
         }
 

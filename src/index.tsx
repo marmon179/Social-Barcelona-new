@@ -11,9 +11,6 @@ let rerenderEntireTree = () => {
         <React.StrictMode>
             <App store={store}
                  dispatch={store.dispatch.bind(store)}
-
-                 addPostDialog={store.addPostDialog.bind(store)}
-                 updateNewPostTextDialogs={store.updateNewPostTextDialogs.bind(store)}
             />,
         </React.StrictMode>,
         document.getElementById('root')
