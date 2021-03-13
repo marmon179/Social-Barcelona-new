@@ -5,12 +5,12 @@ export type RootStateType = {
     dialogsPage: DialogPageType
     profilePage: ProfilePageType
 }
-type ProfilePageType = {
+export type ProfilePageType = {
     dialogsData: Array<MessageType>
     messageForNewPost: string
 
 }
-type DialogPageType = {
+export type DialogPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
     messageForNewPostDialog: string

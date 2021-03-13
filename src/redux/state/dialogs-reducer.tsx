@@ -1,9 +1,21 @@
+import {ActionsTypes} from './state';
+
 type MessageType = {
     message: string
     id: number
 }
+type DialogsType = {
+    name: string,
+    id: number,
+}
+export type DialogPageType = {
+    dialogs: Array<DialogsType>
+    messages: Array<MessageType>
+    messageForNewPostDialog: string
+}
 
-const dialogsReducer = (state: any, action: any) => {
+
+const dialogsReducer = (state: DialogPageType, action: ActionsTypes) => {
     switch (action.type) {
         case 'ADD_POST_DIALOG':
             const newPost: MessageType = {
