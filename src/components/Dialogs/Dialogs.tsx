@@ -2,8 +2,8 @@ import React, {ChangeEvent} from 'react';
 import styles from './Dialogs.module.css'
 import {DialogItem, DialogsType,} from './DialogItem/DialogItem';
 import {Message, MessageType} from './Message/Message';
-import {addPostDialogAC, UpdateNewPostTextDialogAction} from '../../redux/state/dialogs-reducer';
-import {ActionsTypes} from '../../redux/state/state';
+import {addPostDialogAC, UpdateNewPostTextDialogAction} from '../../redux/dialogs-reducer';
+import {ActionsTypes} from '../../redux/state/store';
 
 type DialogPageType = {
     dialogs: Array<DialogsType>

@@ -1,5 +1,5 @@
-import profileReducer, {addPostAC, UpdateNewPostTextAction} from './profile-reducer';
-import dialogsReducer, {addPostDialogAC, UpdateNewPostTextDialogAction} from './dialogs-reducer';
+import profileReducer, {addPostAC, UpdateNewPostTextAction} from '../profile-reducer';
+import dialogsReducer, {addPostDialogAC, UpdateNewPostTextDialogAction} from '../dialogs-reducer';
 
 export type RootStateType = {
     dialogsPage: DialogPageType

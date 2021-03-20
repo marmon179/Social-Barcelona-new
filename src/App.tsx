@@ -5,10 +5,12 @@ import Navbar from './components/./Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {ActionsTypes, StoreType} from './redux/state/state';
+import {ActionsTypes, ProfilePageType} from './redux/state/store';
+import {CombinedState, Store} from 'redux';
+import {DialogPageType} from './redux/dialogs-reducer';
 
 type PropsType = {
-    store: StoreType
+    store: Store<CombinedState<{ profilePage: ProfilePageType; dialogsPage: DialogPageType; }>, ActionsTypes>
     dispatch: (action: ActionsTypes) => void
 
 }

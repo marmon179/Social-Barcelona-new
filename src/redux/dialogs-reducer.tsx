@@ -1,4 +1,4 @@
-import {ActionsTypes} from './state';
+import {ActionsTypes} from './state/store';
 
 type MessageType = {
     message: string
@@ -14,8 +14,21 @@ export type DialogPageType = {
     messageForNewPostDialog: string
 }
 
+const initialState = {
+    dialogs: [
+        {id: 1, name: 'Sascha'},
+        {id: 2, name: 'Maksim'},
+        {id: 3, name: 'Katia'},
+    ],
+    messages: [
+        {id: 1, message: 'Hello'},
+        {id: 2, message: 'Hi!'},
+        {id: 3, message: 'hello'},
+    ],
+    messageForNewPostDialog: '',
+}
 
-const dialogsReducer = (state: DialogPageType, action: ActionsTypes) => {
+const dialogsReducer = (state: DialogPageType = initialState, action: ActionsTypes) => {
     switch (action.type) {
         case 'ADD_POST_DIALOG':
             const newPost: MessageType = {

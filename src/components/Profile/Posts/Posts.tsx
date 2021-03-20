@@ -1,8 +1,8 @@
 import React, {ChangeEvent} from 'react';
 import styles from './Posts.module.css';
 import Post, {MessageType} from './Post/Post';
-import {addPostAC, UpdateNewPostTextAction} from '../../../redux/state/profile-reducer';
-import {ActionsTypes} from '../../../redux/state/state';
+import {addPostAC, UpdateNewPostTextAction} from '../../../redux/profile-reducer';
+import {ActionsTypes} from '../../../redux/state/store';
 
 type ProfilePageType = {
     dialogsData: Array<MessageType>

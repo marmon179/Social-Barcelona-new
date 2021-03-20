@@ -1,4 +1,4 @@
-import {ActionsTypes} from './state';
+import {ActionsTypes} from './state/store';
 
 type ProfilePageType = {
     dialogsData: Array<MessageType>
@@ -10,8 +10,16 @@ type MessageType = {
     id: number
 }
 
+const initialState = {
+    dialogsData: [
+        {id: 1, message: 'Hello people!!!!'},
+        {id: 2, message: 'How are you?'},
+        {id: 3, message: 'Very nice!!!'},
+    ],
+    messageForNewPost: ''
+}
 
-const profileReducer = (state: ProfilePageType, action: ActionsTypes) => {
+const profileReducer = (state: ProfilePageType = initialState, action: ActionsTypes) => {
     switch (action.type) {
         case 'ADD-POST':
             const newPost: MessageType = {

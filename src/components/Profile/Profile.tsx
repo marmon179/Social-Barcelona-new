@@ -2,7 +2,7 @@ import React from 'react';
 import Posts from './Posts/Posts';
 import styles from './Profile.module.css'
 import {MessageType} from './Posts/Post/Post';
-import {ActionsTypes} from '../../redux/state/state';
+import {ActionsTypes} from '../../redux/state/store';
 
 type ProfilePageType = {
     dialogsData: Array<MessageType>
