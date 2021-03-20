@@ -7,36 +7,22 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {ActionsTypes, ProfilePageType} from './redux/state/store';
 import {CombinedState, Store} from 'redux';
 import {DialogPageType} from './redux/dialogs-reducer';
+import {DialogsContainer} from './components/Dialogs/DialogsContainer';
 
 type PropsType = {
     store: Store<CombinedState<{ profilePage: ProfilePageType; dialogsPage: DialogPageType; }>, ActionsTypes>
-    // dispatch: (action: ActionsTypes) => void
 
 }
 
 function App(props: PropsType) {
-    const state = props.store.getState()
-
-    const dialogs = state.dialogsPage.dialogs
-    const messages = state.dialogsPage.messages
-    const messageForNewPostDialog = state.dialogsPage.messageForNewPostDialog
-    const dialogsData = state.profilePage.dialogsData
-    const newPostText = state.profilePage.messageForNewPost
     return (
         <BrowserRouter>
             <div className={s.wrapper}>
                 <Header/>
                 <Navbar/>
                 <div className={s.appWrapperContent}>
-                    <Route path={'/profile'}
-                           render={() => <Profile  newPostText={newPostText}
-                                                   store={props.store}/>}/>
-                    {/*<Route path={'/dialogs'}*/}
-                    {/*       render={() => <Dialogs dialogs={dialogs}*/}
-                    {/*                              messages={messages}*/}
-                    {/*                              dispatch={props.dispatch}*/}
-                    {/*                              messageForNewPostDialog={messageForNewPostDialog}*/}
-                    {/*       />}/>*/}
+                    <Route path={'/profile'} render={() => <Profile store={props.store}/>}/>
+                    <Route path={'/dialogs'} render={() => <DialogsContainer store={props.store}/>}/>
                 </div>
 
             </div>

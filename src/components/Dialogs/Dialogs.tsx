@@ -2,28 +2,18 @@ import React, {ChangeEvent} from 'react';
 import styles from './Dialogs.module.css'
 import {DialogItem, DialogsType,} from './DialogItem/DialogItem';
 import {Message, MessageType} from './Message/Message';
-import {addPostDialogAC, UpdateNewPostTextDialogAction} from '../../redux/dialogs-reducer';
-import {ActionsTypes} from '../../redux/state/store';
 
 type DialogPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
-    dispatch: (action: ActionsTypes) => void
     messageForNewPostDialog: string
+    addPost: () => void
+    onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-const Dialogs: React.FC<DialogPageType> = (props) => {
+export const Dialogs: React.FC<DialogPageType> = (props) => {
     const elementDialogs = props.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
     const elementsMessages = props.messages.map(m => <div><Message key={m.id} message={m.message} id={m.id}/></div>)
-
-    const addPost = () => {
-        props.dispatch(addPostDialogAC())
-    }
-    const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        const text = e.currentTarget.value
-        props.dispatch(UpdateNewPostTextDialogAction(text))
-
-    }
 
     return (
         <div className={styles.wrapper}>
@@ -44,10 +34,10 @@ const Dialogs: React.FC<DialogPageType> = (props) => {
                 </div>
                 <div className={styles.wrapperTextarea}>
                     <div>
-                        <textarea value={props.messageForNewPostDialog} onChange={onPostChange}/>
+                        <textarea value={props.messageForNewPostDialog} onChange={props.onPostChange}/>
                     </div>
                     <div>
-                        <button onClick={addPost}>Add post</button>
+                        <button onClick={props.addPost}>Add post</button>
                     </div>
                 </div>
             </div>

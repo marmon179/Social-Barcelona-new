@@ -1,12 +1,11 @@
 import React, {ChangeEvent} from 'react';
-import Posts from '../Posts';
-import {ActionsTypes, ProfilePageType} from '../../../../redux/state/store';
-import {addPostAC, UpdateNewPostTextAction} from '../../../../redux/profile-reducer';
+import Posts from './Posts';
+import {ActionsTypes, ProfilePageType} from '../../../redux/state/store';
+import {addPostAC, UpdateNewPostTextAction} from '../../../redux/profile-reducer';
 import {CombinedState, Store} from 'redux';
-import {DialogPageType} from '../../../../redux/dialogs-reducer';
+import {DialogPageType} from '../../../redux/dialogs-reducer';
 
 type Profile_PageType = {
-    newPostText: string
     store:Store<CombinedState<{ profilePage: ProfilePageType; dialogsPage: DialogPageType; }>, ActionsTypes>
 }
 
@@ -21,10 +20,11 @@ const PostsContainer: React.FC<Profile_PageType> = (props) => {
     }
 
     const dialogsData = props.store.getState().profilePage.dialogsData
+    const newPostText = props.store.getState().profilePage.messageForNewPost
 
     return (
         <div>
-            <Posts newPostText={props.newPostText}
+            <Posts newPostText={newPostText}
                    dialogsData={dialogsData}
                    addPost={addPost}
                    onPostChange={onPostChange}/>
