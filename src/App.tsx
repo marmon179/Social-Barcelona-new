@@ -31,13 +31,13 @@ function App(props: PropsType) {
                 <div className={s.appWrapperContent}>
                     <Route path={'/profile'}
                            render={() => <Profile dialogsData={dialogsData} newPostText={newPostText}
-                                                  dispatch={props.dispatch}/>}/>
-                    <Route path={'/dialogs'}
-                           render={() => <Dialogs dialogs={dialogs}
-                                                  messages={messages}
-                                                  dispatch={props.dispatch}
-                                                  messageForNewPostDialog={messageForNewPostDialog}
-                           />}/>
+                                                  dispatch={props.dispatch} store={props.store}/>}/>
+                    {/*<Route path={'/dialogs'}*/}
+                    {/*       render={() => <Dialogs dialogs={dialogs}*/}
+                    {/*                              messages={messages}*/}
+                    {/*                              dispatch={props.dispatch}*/}
+                    {/*                              messageForNewPostDialog={messageForNewPostDialog}*/}
+                    {/*       />}/>*/}
                 </div>
 
             </div>

@@ -1,16 +1,19 @@
 import React from 'react';
-import Posts from './Posts/Posts';
 import styles from './Profile.module.css'
 import {MessageType} from './Posts/Post/Post';
-import {ActionsTypes} from '../../redux/state/store';
+import {ActionsTypes, ProfilePageType} from '../../redux/state/store';
+import PostsContainer from './Posts/Post/PostsContainer';
+import {CombinedState, Store} from 'redux';
+import {DialogPageType} from '../../redux/dialogs-reducer';
 
-type ProfilePageType = {
+type Profile_PageType = {
     dialogsData: Array<MessageType>
     newPostText: string
     dispatch: (action: ActionsTypes) => void
+    store:Store<CombinedState<{ profilePage: ProfilePageType; dialogsPage: DialogPageType; }>, ActionsTypes>
 }
 
-const Profile: React.FC<ProfilePageType> = (props) => {
+const Profile: React.FC<Profile_PageType> = (props) => {
         return (
             <div className={styles.wrapper}>
                 <div className={styles.wrapperImg}>
@@ -19,9 +22,9 @@ const Profile: React.FC<ProfilePageType> = (props) => {
                         alt="Barca"/>
                 </div>
                 <div className={styles.wrapperDialogs}>
-                    <Posts dialogsData={props.dialogsData} newPostText={props.newPostText}
+                    <PostsContainer dialogsData={props.dialogsData} newPostText={props.newPostText}
                            // updateNewPostText={props.updateNewPostText}
-                           dispatch={props.dispatch}/>
+                            store={props.store}/>
                 </div>
             </div>
 
