@@ -3,7 +3,6 @@ import s from './App.module.css'
 import Header from './components/./Header/Header';
 import Navbar from './components/./Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {ActionsTypes, ProfilePageType} from './redux/state/store';
 import {CombinedState, Store} from 'redux';
@@ -11,7 +10,7 @@ import {DialogPageType} from './redux/dialogs-reducer';
 
 type PropsType = {
     store: Store<CombinedState<{ profilePage: ProfilePageType; dialogsPage: DialogPageType; }>, ActionsTypes>
-    dispatch: (action: ActionsTypes) => void
+    // dispatch: (action: ActionsTypes) => void
 
 }
 
@@ -30,8 +29,8 @@ function App(props: PropsType) {
                 <Navbar/>
                 <div className={s.appWrapperContent}>
                     <Route path={'/profile'}
-                           render={() => <Profile dialogsData={dialogsData} newPostText={newPostText}
-                                                  dispatch={props.dispatch} store={props.store}/>}/>
+                           render={() => <Profile  newPostText={newPostText}
+                                                   store={props.store}/>}/>
                     {/*<Route path={'/dialogs'}*/}
                     {/*       render={() => <Dialogs dialogs={dialogs}*/}
                     {/*                              messages={messages}*/}
