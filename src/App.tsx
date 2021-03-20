@@ -2,15 +2,11 @@ import React from 'react';
 import s from './App.module.css'
 import Header from './components/./Header/Header';
 import Navbar from './components/./Navbar/Navbar';
-import Profile from './components/Profile/Profile';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {ActionsTypes, ProfilePageType} from './redux/state/store';
-import {CombinedState, Store} from 'redux';
-import {DialogPageType} from './redux/dialogs-reducer';
 import {DialogsContainer} from './components/Dialogs/DialogsContainer';
+import Profile from './components/Profile/Profile';
 
 type PropsType = {
-    store: Store<CombinedState<{ profilePage: ProfilePageType; dialogsPage: DialogPageType; }>, ActionsTypes>
 
 }
 
@@ -21,8 +17,8 @@ function App(props: PropsType) {
                 <Header/>
                 <Navbar/>
                 <div className={s.appWrapperContent}>
-                    <Route path={'/profile'} render={() => <Profile store={props.store}/>}/>
-                    <Route path={'/dialogs'} render={() => <DialogsContainer store={props.store}/>}/>
+                    <Route path={'/profile'} render={() => <Profile />}/>
+                    <Route path={'/dialogs'} render={() => <DialogsContainer />}/>
                 </div>
 
             </div>

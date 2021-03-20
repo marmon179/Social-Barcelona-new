@@ -1,12 +1,9 @@
 import React from 'react';
 import styles from './Profile.module.css'
-import {ActionsTypes, ProfilePageType} from '../../redux/state/store';
 import PostsContainer from './Posts/PostsContainer';
-import {CombinedState, Store} from 'redux';
-import {DialogPageType} from '../../redux/dialogs-reducer';
 
 type Profile_PageType = {
-    store: Store<CombinedState<{ profilePage: ProfilePageType; dialogsPage: DialogPageType; }>, ActionsTypes>
+
 }
 
 const Profile: React.FC<Profile_PageType> = (props) => {
@@ -18,7 +15,7 @@ const Profile: React.FC<Profile_PageType> = (props) => {
                         alt="Barca"/>
                 </div>
                 <div className={styles.wrapperDialogs}>
-                    <PostsContainer store={props.store}/>
+                    <PostsContainer />
                 </div>
             </div>
 
