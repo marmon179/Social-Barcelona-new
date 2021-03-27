@@ -30,28 +30,23 @@ const initialState: InitialStateTypeDialogs = {
 }
 
 const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: ActionsTypes): InitialStateTypeDialogs => {
-    let stateCopy;
     switch (action.type) {
         case 'ADD_POST_DIALOG':
             const newPost: MessageType = {
                 id: 4,
                 message: state.messageForNewPostDialog
             };
-            stateCopy = {
+            return {
                 ...state,
-                messages: [...state.messages],
+                messages: [...state.messages, newPost],
                 messageForNewPostDialog: ''
             }
-            stateCopy.messages.push(newPost)
-            return stateCopy
 
         case 'UPDATE_NEW_POST_TEXT_DIALOG':
-            stateCopy = {
+            return {
                 ...state,
                 messageForNewPostDialog: action.newText
             }
-            return stateCopy
-
         default:
             return state
     }
