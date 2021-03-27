@@ -20,24 +20,27 @@ const initialState: InitialStateTypeProfile = {
 }
 
 const profileReducer = (state: InitialStateTypeProfile = initialState, action: ActionsTypes): InitialStateTypeProfile => {
-
+    let stateCopy;
     switch (action.type) {
-        case 'ADD-POST': {
+        case 'ADD-POST':
             const newPost: MessageType = {
                 id: 4,
                 message: state.messageForNewPost
             };
-            const stateCopy = {...state}
-            stateCopy.dialogsData = [...state.dialogsData]
+            stateCopy = {
+                ...state,
+                dialogsData: [...state.dialogsData],
+                messageForNewPost: ''
+            }
             stateCopy.dialogsData.push(newPost)
-            stateCopy.messageForNewPost = ''
             return stateCopy
-        }
-        case 'UPDATE-NEW-POST-TEXT': {
-            const stateCopy = {...state}
-            stateCopy.messageForNewPost = action.newText
+
+        case 'UPDATE-NEW-POST-TEXT':
+            stateCopy = {
+                ...state,
+                messageForNewPost:action.newText
+            }
             return stateCopy
-        }
         default:
             return state
     }
