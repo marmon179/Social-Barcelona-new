@@ -8,13 +8,14 @@ type DialogsType = {
     name: string,
     id: number,
 }
-export type DialogPageType = {
+export type InitialStateTypeDialogs = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
     messageForNewPostDialog: string
 }
 
-const initialState = {
+
+const initialState: InitialStateTypeDialogs = {
     dialogs: [
         {id: 1, name: 'Sascha'},
         {id: 2, name: 'Maksim'},
@@ -28,7 +29,7 @@ const initialState = {
     messageForNewPostDialog: '',
 }
 
-const dialogsReducer = (state: DialogPageType = initialState, action: ActionsTypes) => {
+const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: ActionsTypes): InitialStateTypeDialogs => {
     switch (action.type) {
         case 'ADD_POST_DIALOG':
             const newPost: MessageType = {

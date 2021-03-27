@@ -1,34 +1,31 @@
 import React, {ChangeEvent} from 'react';
-import {addPostDialogAC, UpdateNewPostTextDialogAction} from '../../redux/dialogs-reducer';
+import {addPostDialogAC, InitialStateTypeDialogs, UpdateNewPostTextDialogAction} from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs';
-import StoreContext from '../../StoreContext';
+import {connect} from 'react-redux';
+import {AppStateType} from '../../redux/redux-store';
 
-type Dialog_PageType = {
+type MapStatePropsType = InitialStateTypeDialogs
 
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
+    return {
+        dialogs: state.dialogsPage.dialogs,
+        messages: state.dialogsPage.messages,
+        messageForNewPostDialog: state.dialogsPage.messageForNewPostDialog
+    }
 }
 
-export const DialogsContainer: React.FC<Dialog_PageType> = (props) => {
-    return (
-        <StoreContext.Consumer>
-            { (store) => {
-                const addPost = () => {
-                    store.dispatch(addPostDialogAC())
-                }
-                const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-                    const text = e.currentTarget.value
-                    store.dispatch(UpdateNewPostTextDialogAction(text))
-                }
-                const dialogs = store.getState().dialogsPage.dialogs
-                const messages = store.getState().dialogsPage.messages
-                const messageForNewPostDialog = store.getState().dialogsPage.messageForNewPostDialog
-                return <Dialogs dialogs={dialogs}
-                                messages={messages}
-                                messageForNewPostDialog={messageForNewPostDialog}
-                                onPostChange={onPostChange}
-                                addPost={addPost}/>
-            }
-            }
-        </StoreContext.Consumer>
-    )
-};
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => {
+            const text = e.currentTarget.value
+            dispatch(UpdateNewPostTextDialogAction(text))
+        },
+        addPost: () => {
+            dispatch(addPostDialogAC())
+        }
+    }
+}
+
+
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 

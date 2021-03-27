@@ -1,12 +1,10 @@
 import React from 'react';
 import styles from './Profile.module.css'
-import PostsContainer from './Posts/PostsContainer';
+import {PostsContainer} from './Posts/PostsContainer';
 
-type Profile_PageType = {
+type Profile_PageType = {}
 
-}
-
-const Profile: React.FC<Profile_PageType> = (props) => {
+const Profile: React.FC<Profile_PageType> = () => {
         return (
             <div className={styles.wrapper}>
                 <div className={styles.wrapperImg}>
@@ -15,7 +13,7 @@ const Profile: React.FC<Profile_PageType> = (props) => {
                         alt="Barca"/>
                 </div>
                 <div className={styles.wrapperDialogs}>
-                    <PostsContainer />
+                    <PostsContainer/>
                 </div>
             </div>
 

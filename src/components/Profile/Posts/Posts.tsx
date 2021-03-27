@@ -4,7 +4,7 @@ import Post, {MessageType} from './Post/Post';
 
 type ProfilePageType = {
     dialogsData: Array<MessageType>
-    newPostText: string
+    messageForNewPost: string
     addPost: () => void
     onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
 }
@@ -20,7 +20,7 @@ export const Posts: React.FC<ProfilePageType> = (props) => {
             <div className={styles.wrapperTextarea}>
 
                 <div>
-                    <textarea onChange={props.onPostChange} value={props.newPostText}> </textarea>
+                    <textarea onChange={props.onPostChange} value={props.messageForNewPost}> </textarea>
                 </div>
 
                 <div>

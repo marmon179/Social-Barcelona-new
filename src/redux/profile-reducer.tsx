@@ -1,6 +1,6 @@
 import {ActionsTypes} from './state/store';
 
-type ProfilePageType = {
+export type InitialStateTypeProfile = {
     dialogsData: Array<MessageType>
     messageForNewPost: string
 
@@ -10,7 +10,7 @@ type MessageType = {
     id: number
 }
 
-const initialState = {
+const initialState: InitialStateTypeProfile = {
     dialogsData: [
         {id: 1, message: 'Hello people!!!!'},
         {id: 2, message: 'How are you?'},
@@ -19,7 +19,7 @@ const initialState = {
     messageForNewPost: ''
 }
 
-const profileReducer = (state: ProfilePageType = initialState, action: ActionsTypes) => {
+const profileReducer = (state: InitialStateTypeProfile = initialState, action: ActionsTypes): InitialStateTypeProfile => {
     switch (action.type) {
         case 'ADD-POST':
             const newPost: MessageType = {
