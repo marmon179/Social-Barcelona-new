@@ -1,21 +1,19 @@
 import {ActionsTypes} from './state/store';
 
-export type InitialStateTypeProfile = {
-    dialogsData: Array<MessageType>
-    messageForNewPost: string
 
-}
+export type InitialStateTypeProfile = typeof initialState
+
 type MessageType = {
     message: string
     id: number
 }
 
-const initialState: InitialStateTypeProfile = {
+const initialState = {
     dialogsData: [
         {id: 1, message: 'Hello people!!!!'},
         {id: 2, message: 'How are you?'},
         {id: 3, message: 'Very nice!!!'},
-    ],
+    ] as Array<MessageType>,
     messageForNewPost: ''
 }
 

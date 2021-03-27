@@ -8,24 +8,20 @@ type DialogsType = {
     name: string,
     id: number,
 }
-export type InitialStateTypeDialogs = {
-    dialogs: Array<DialogsType>
-    messages: Array<MessageType>
-    messageForNewPostDialog: string
-}
+export type InitialStateTypeDialogs = typeof initialState
 
 
-const initialState: InitialStateTypeDialogs = {
+const initialState = {
     dialogs: [
         {id: 1, name: 'Sascha'},
         {id: 2, name: 'Maksim'},
         {id: 3, name: 'Katia'},
-    ],
+    ] as Array<DialogsType>,
     messages: [
         {id: 1, message: 'Hello'},
         {id: 2, message: 'Hi!'},
         {id: 3, message: 'hello'},
-    ],
+    ] as Array<MessageType>,
     messageForNewPostDialog: '',
 }
 
