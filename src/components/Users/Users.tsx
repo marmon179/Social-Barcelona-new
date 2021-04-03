@@ -5,18 +5,18 @@ import axios from 'axios';
 import userPhoto from '../../assets/images/user-male.png'
 
 
-const Users = (props: UsersPropsType) => {
-   const getUsers = () => (props.users.users.length === 0)
-       {
+class Users extends React.Component<UsersPropsType> {
+    constructor(props: any) {
+        super(props);
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            props.setUsers(response.data.items)
+            this.props.setUsers(response.data.items)
         })
     }
 
-    return <div>
-        <button onClick={getUsers}>Get Users</button>
-        {
-            props.users.users.map(u => <div key={u.id}>
+    render() {
+        return <div>
+            {
+                this.props.users.users.map(u => <div key={u.id}>
                 <span>
                     <div>
                         <img src={u.photos.small != null ? u.photos.small : userPhoto} alt={'image'}
@@ -25,15 +25,15 @@ const Users = (props: UsersPropsType) => {
                     <div>
                         {u.followed
                             ? <button onClick={() => {
-                                props.unfollow(u.id)
+                                this.props.unfollow(u.id)
                             }}>UnFollow</button>
                             : <button onClick={() => {
-                                props.follow(u.id)
+                                this.props.follow(u.id)
                             }}>Follow</button>}
 
                     </div>
                 </span>
-                <span>
+                    <span>
                     <span>
                         <div>{u.name}</div>
                         <div>{u.status}</div>
@@ -43,10 +43,11 @@ const Users = (props: UsersPropsType) => {
                         <div>{'u.location.city'}</div>
                     </span>
                 </span>
-            </div>)
-        }
+                </div>)
+            }
 
-    </div>
+        </div>
+    }
 }
 
 export default Users
