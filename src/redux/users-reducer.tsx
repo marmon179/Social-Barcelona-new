@@ -3,8 +3,8 @@ export type InitialStateTypeUser = {
 }
 export type UserType = {
     id: string
-    photo: string
-    fullName: string
+    photos: any
+    name: string
     followed: boolean
     status: string
     location: LocationType
