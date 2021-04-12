@@ -6,8 +6,8 @@ import {InitialStateTypeUser} from '../../redux/users-reducer';
 export type UsersType = {
     totalUsersCount: number
     pageSize: number
-    currentPage: any
-    onPageChanged: any
+    currentPage: number
+    onPageChanged: (pageNumber: number) => void
     users: InitialStateTypeUser
     follow: (userId: string) => void
     unfollow: (userId: string) => void
