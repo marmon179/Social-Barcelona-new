@@ -14,7 +14,9 @@ const initialState = {
         {id: 2, message: 'How are you?'},
         {id: 3, message: 'Very nice!!!'},
     ] as Array<MessageType>,
-    messageForNewPost: ''
+    messageForNewPost: '',
+    profile:null
+
 }
 
 const profileReducer = (state: InitialStateTypeProfile = initialState, action: ActionsTypes): InitialStateTypeProfile => {
@@ -34,6 +36,12 @@ const profileReducer = (state: InitialStateTypeProfile = initialState, action: A
                 ...state,
                 messageForNewPost: action.newText
             }
+        case 'SET_USER_PROFILE':
+            return {
+                ...state,
+                profile: action.profile
+            }
+
         default:
             return state
     }
@@ -41,6 +49,7 @@ const profileReducer = (state: InitialStateTypeProfile = initialState, action: A
 }
 
 export const addPostAC = () => ({type: 'ADD-POST'} as const)
+export const setUserProfile = (profile: null) => ({type: 'SET_USER_PROFILE', profile} as const)
 export const UpdateNewPostTextAction = (newText: string) => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText} as const)
 
 export default profileReducer

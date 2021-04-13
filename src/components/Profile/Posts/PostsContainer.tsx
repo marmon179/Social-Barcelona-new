@@ -9,7 +9,9 @@ type MapStatePropsType = InitialStateTypeProfile
 const mapStateProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogsData: state.profilePage.dialogsData,
-        messageForNewPost: state.profilePage.messageForNewPost
+        messageForNewPost: state.profilePage.messageForNewPost,
+        profile: state.profilePage.profile
+
     }
 }
 
