@@ -3,9 +3,11 @@ export type InitialStateTypeUser = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
-    isFetching:boolean
+    isFetching: boolean
+    followingInProgress: Array<string>
 
 }
+
 export type UserType = {
     id: string
     photos: any
@@ -25,7 +27,8 @@ type ActionsTypes = {
     users: UserType[]
     currentPage: number
     count: number
-    isFetching:boolean
+    isFetching: boolean
+
 }
 
 const initialState: InitialStateTypeUser = {
@@ -33,7 +36,8 @@ const initialState: InitialStateTypeUser = {
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    followingInProgress: []
 }
 
 const usersReducer = (state: InitialStateTypeUser = initialState, action: ActionsTypes): InitialStateTypeUser => {
@@ -69,6 +73,14 @@ const usersReducer = (state: InitialStateTypeUser = initialState, action: Action
         case 'TOGGLE_IS_FETCHING': {
             return {...state, isFetching: action.isFetching}
         }
+        case 'TOGGLE_IS_FOLLOWING_PROGRESS': {
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userID]
+                    : state.followingInProgress.filter((id: string) => id != action.userID)
+            }
+        }
         default:
             return state;
     }
@@ -78,14 +90,19 @@ const usersReducer = (state: InitialStateTypeUser = initialState, action: Action
 export const follow = (userID: string) => ({type: 'FOLLOW', userID} as const)
 export const unfollow = (userID: string) => ({type: 'UNFOLLOW', userID} as const)
 export const setUser = (users: Array<UserType>) => ({type: 'SET_USERS', users} as const)
-export const setCurrentPage = (currentPage: any) => ({type: 'SET_CURRENT_PAGE', currentPage} as const)
-export const setTotalUsersCount = (totalUsersCount: any) => ({
+export const setCurrentPage = (currentPage: number) => ({type: 'SET_CURRENT_PAGE', currentPage} as const)
+export const setTotalUsersCount = (totalUsersCount: number) => ({
     type: 'SET_TOTAL_USERS_COUNT',
     count: totalUsersCount
 } as const)
 export const toggleIsFetching = (isFetching: boolean) => ({
     type: 'TOGGLE_IS_FETCHING',
     isFetching
+} as const)
+export const toggleFollowingProgress = (isFetching: boolean, userId: number) => ({
+    type: 'TOGGLE_IS_FOLLOWING_PROGRESS',
+    isFetching,
+    userId
 } as const)
 
 export default usersReducer

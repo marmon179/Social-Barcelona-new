@@ -13,6 +13,8 @@ export type UsersType = {
     users: InitialStateTypeUser
     follow: (userId: string) => void
     unfollow: (userId: string) => void
+    toggleFollowingProgress: (isFetching: boolean, id: number) => void
+    followingInProgress: Array<string>
 }
 
 export const Users = (props: UsersType) => {
@@ -41,41 +43,44 @@ export const Users = (props: UsersType) => {
                     </div>
                     <div>
                         {u.followed
-                            ? <button onClick={() => {
+                            ? <button disabled={props.followingInProgress.some((id: string) => id === u.id)}
+                                      onClick={() => {
+                                          props.toggleFollowingProgress(true, u.id)
+                                          axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                              withCredentials: true,
+                                              headers: {
+                                                  'API-KEY': '9cd2c268-195b-4b42-abcf-5a1644af026e'
+                                              }
+                                          })
+                                              .then(response => {
+                                                  if (response.data.resultCode === 0) {
+                                                      props.unfollow(u.id)
+                                                  }
+                                                  props.toggleFollowingProgress(false, u.id)
+                                              })
+                                      }}>UnFollow</button>
+                            : <button disabled={props.followingInProgress.some((id: string) => id === u.id)}
+                                      onClick={() => {
+                                          props.toggleFollowingProgress(true, u.id)
+                                          axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                              withCredentials: true,
+                                              headers: {
+                                                  'API-KEY': '9cd2c268-195b-4b42-abcf-5a1644af026e'
+                                              }
+                                          })
+                                              .then(response => {
+                                                  if (response.data.resultCode === 0) {
+                                                      props.follow(u.id)
+                                                  }
+                                                  props.toggleFollowingProgress(false, u.id)
+                                              })
 
-                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                    withCredentials: true,
-                                    headers: {
-                                        'API-KEY': '9cd2c268-195b-4b42-abcf-5a1644af026e'
-                                    }
-                                })
-                                    .then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.unfollow(u.id)
-                                        }
-                                    })
 
-
-                            }}>UnFollow</button>
-                            : <button onClick={() => {
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                    withCredentials: true,
-                                    headers: {
-                                        'API-KEY': '9cd2c268-195b-4b42-abcf-5a1644af026e'
-                                    }
-                                })
-                                    .then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.follow(u.id)
-                                        }
-                                    })
-
-
-                            }}>Follow</button>}
+                                      }}>Follow</button>}
 
                                 </div>
                                 </span>
-                                <span>
+                <span>
                                 <span>
                                 <div>{u.name}</div>
                                 <div>{u.status}</div>
@@ -85,8 +90,8 @@ export const Users = (props: UsersType) => {
                                 <div>{'u.location.city'}</div>
                                 </span>
                                 </span>
-                                </div>)
-                                }
+            </div>)
+        }
 
-                                </div>
-                                }
+    </div>
+}
