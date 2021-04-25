@@ -15,6 +15,7 @@ export type DialogPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
     messageForNewPostDialog: string
+    isAuth:boolean
 }
 type MessageType = {
     message: string
@@ -64,6 +65,7 @@ export const store: StoreType = {
                 {id: 3, message: 'hello'},
             ],
             messageForNewPostDialog: '',
+            isAuth:false
         }
     },
     _onChange() {

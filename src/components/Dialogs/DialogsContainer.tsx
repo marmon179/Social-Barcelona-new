@@ -10,7 +10,8 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogs: state.dialogsPage.dialogs,
         messages: state.dialogsPage.messages,
-        messageForNewPostDialog: state.dialogsPage.messageForNewPostDialog
+        messageForNewPostDialog: state.dialogsPage.messageForNewPostDialog,
+        isAuth: state.auth.isAuth
     }
 }
 
