@@ -1,3 +1,5 @@
+import {usersAPI} from '../api/api';
+
 export type InitialStateTypeUser = {
     users: Array<UserType>
     pageSize: number
@@ -99,10 +101,25 @@ export const toggleIsFetching = (isFetching: boolean) => ({
     type: 'TOGGLE_IS_FETCHING',
     isFetching
 } as const)
-export const toggleFollowingProgress = (isFetching: boolean,userID:number) => ({
+export const toggleFollowingProgress = (isFetching: boolean, userID: number) => ({
     type: 'TOGGLE_IS_FOLLOWING_PROGRESS',
     isFetching,
     userID
 } as const)
+
+export const getUsers = (currentPage: number, pageSize: number) => {
+    return (dispatch: any) => {
+
+        dispatch(toggleIsFetching(true))
+
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(toggleIsFetching(false))
+                dispatch(setUser(data.items))
+                dispatch(setTotalUsersCount(data.totalCount))
+            })
+    }
+}
+
 
 export default usersReducer
