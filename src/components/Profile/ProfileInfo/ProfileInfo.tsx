@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ProfileInfo.module.css'
 import Preloader from '../../common/Preloader/Preloader';
+import ProfileStatus from './ProfileStatus';
 
 type ProfileInfoPropsType = {
     profile: any
@@ -23,6 +24,7 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = (props) => {
                     <div className={styles.imgAvatar}>
                         <img src={props.profile.photos.large} alt="img"/>
                     </div>
+                    <ProfileStatus status='MY STATUS.I AM READY!!!!!'/>
                     <div className={styles.wrapperTextInfo}>
                         <span>
                         <p>{props.profile.fullName}</p>
