@@ -13,14 +13,14 @@ export const usersAPI = {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => response.data)
     },
-    follow(userId: any) {
+    follow(userId: number) {
         return instance.post(`follow/${userId}`)
 
     },
-    unfollow(userId: any) {
+    unfollow(userId: number) {
         return instance.delete(`follow/${userId}`)
     },
-    getUserProfile(userId: any) {
+    getUserProfile(userId: number) {
         return instance.get(`profile/` + userId)
     }
 }

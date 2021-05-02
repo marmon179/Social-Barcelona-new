@@ -11,6 +11,7 @@ import {
 import {AppStateType} from '../../redux/redux-store';
 import {Users} from './Users';
 import Preloader from '../common/Preloader/Preloader';
+import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 
 type MapStatePropsType = {
     users: InitialStateTypeUser
@@ -36,7 +37,7 @@ class UsersContainer extends React.Component<UsersPropsType> {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
-    onPageChanged = (pageNumber: any) => {
+    onPageChanged = (pageNumber: number) => {
         this.props.getUsers(pageNumber, this.props.pageSize);
     }
 
@@ -71,13 +72,15 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-export default connect<MapStatePropsType, MapDispatchPropsType, {}, AppStateType>(mapStateToProps, {
+let withRedirect = withAuthRedirect(UsersContainer)
+
+export default withAuthRedirect(connect<MapStatePropsType, MapDispatchPropsType, {}, AppStateType>(mapStateToProps, {
     follow: followSuccess,
     unfollow: unfollowSuccess,
     setCurrentPage,
     toggleFollowingProgress,
     getUsers
-})(UsersContainer)
+})(withRedirect))
 
 
 
