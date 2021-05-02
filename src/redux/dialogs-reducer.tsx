@@ -23,7 +23,6 @@ const initialState = {
         {id: 3, message: 'hello'},
     ] as Array<MessageType>,
     messageForNewPostDialog: '',
-    isAuth:false
 
 }
 

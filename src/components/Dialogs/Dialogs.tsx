@@ -2,7 +2,6 @@ import React, {ChangeEvent} from 'react';
 import styles from './Dialogs.module.css'
 import {DialogItem, DialogsType,} from './DialogItem/DialogItem';
 import {Message, MessageType} from './Message/Message';
-import {Redirect} from 'react-router-dom';
 
 type DialogPageType = {
     dialogs: Array<DialogsType>
@@ -17,9 +16,7 @@ export const Dialogs: React.FC<DialogPageType> = (props) => {
     const elementDialogs = props.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
     const elementsMessages = props.messages.map(m => <div><Message key={m.id} message={m.message} id={m.id}/></div>)
 
-    if (!props.isAuth) return <Redirect to={'/login'}/>;
-
-    return (
+        return (
         <div className={styles.wrapper}>
             <div className={styles.wrapperImage}>
                 <img

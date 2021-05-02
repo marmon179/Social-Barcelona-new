@@ -3,6 +3,7 @@ import {addPostDialogAC, InitialStateTypeDialogs, UpdateNewPostTextDialogAction}
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
 import {AppStateType} from '../../redux/redux-store';
+import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 
 type MapStatePropsType = InitialStateTypeDialogs
 
@@ -11,7 +12,6 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
         dialogs: state.dialogsPage.dialogs,
         messages: state.dialogsPage.messages,
         messageForNewPostDialog: state.dialogsPage.messageForNewPostDialog,
-        isAuth: state.auth.isAuth
     }
 }
 
@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch: any) => {
     }
 }
 
+const AuthRedirectComponent = withAuthRedirect(Dialogs)
 
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
 
