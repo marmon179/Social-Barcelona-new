@@ -1,4 +1,10 @@
-import profileReducer, {addPostAC, setUserProfile, UpdateNewPostTextAction} from '../profile-reducer';
+import profileReducer, {
+    addPostAC,
+    setStatus,
+    setUserProfile,
+    UpdateNewPostTextAction,
+    updateStatus
+} from '../profile-reducer';
 import dialogsReducer, {addPostDialogAC, UpdateNewPostTextDialogAction} from '../dialogs-reducer';
 
 export type RootStateType = {
@@ -8,7 +14,9 @@ export type RootStateType = {
 export type ProfilePageType = {
     dialogsData: Array<MessageType>
     messageForNewPost: string
-    profile:null
+    profile: null
+    status: string
+
 
 }
 export type DialogPageType = {
@@ -38,7 +46,8 @@ export type ActionsTypes =
     ReturnType<typeof UpdateNewPostTextAction> |
     ReturnType<typeof setUserProfile> |
     ReturnType<typeof addPostDialogAC> |
-    ReturnType<typeof UpdateNewPostTextDialogAction>
+    ReturnType<typeof UpdateNewPostTextDialogAction> |
+    ReturnType<typeof setStatus>
 
 
 export const store: StoreType = {
@@ -50,7 +59,8 @@ export const store: StoreType = {
                 {id: 3, message: 'Very nice!!!'},
             ],
             messageForNewPost: '',
-            profile:null
+            profile: null,
+            status: ''
         },
         dialogsPage: {
             dialogs: [

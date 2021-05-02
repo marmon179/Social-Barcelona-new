@@ -10,7 +10,8 @@ const mapStateProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogsData: state.profilePage.dialogsData,
         messageForNewPost: state.profilePage.messageForNewPost,
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
+        status: state.profilePage.status
 
     }
 }
