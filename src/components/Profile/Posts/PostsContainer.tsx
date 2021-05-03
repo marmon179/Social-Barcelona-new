@@ -3,6 +3,7 @@ import Posts from './Posts';
 import {addPostAC, InitialStateTypeProfile, UpdateNewPostTextAction} from '../../../redux/profile-reducer';
 import {connect} from 'react-redux';
 import {AppStateType} from '../../../redux/redux-store';
+import {Dispatch} from 'redux';
 
 type MapStatePropsType = InitialStateTypeProfile
 
@@ -16,7 +17,7 @@ const mapStateProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         addPost: () => {
             dispatch(addPostAC())
