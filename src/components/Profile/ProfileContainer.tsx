@@ -15,13 +15,13 @@ type PathParamsType = {
 
 type MapStatePropsType = {
     profile: ProfilePageType | null
-    status: any
+    status: string
 }
 
 type MapDispatchPropsType = {
     getUserProfile: (userId: string) => void
     getStatus: (userId: string) => void
-    updateStatus: (status: any) => void
+    updateStatus: (status: string) => void
 }
 
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType

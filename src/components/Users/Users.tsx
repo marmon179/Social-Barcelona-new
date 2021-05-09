@@ -17,12 +17,15 @@ export type UsersType = {
 }
 
 export const Users = (props: UsersType) => {
+
     const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     const pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
+
     return <div>
+
         <div>
             {pages.map(p => {
                 return <span className={props.currentPage === p ? s.selectedPage : ''}
@@ -30,7 +33,9 @@ export const Users = (props: UsersType) => {
                                  props.onPageChanged(p)
                              }}>{p}</span>
             })}
+
         </div>
+
         {
             props.users.users.map((u: any) => <div key={u.id}>
                 <span>
@@ -40,25 +45,38 @@ export const Users = (props: UsersType) => {
                              className={s.userPhoto}/>
                             </NavLink>
                     </div>
+
                     <div>
                         {u.followed
-                            ? <button disabled={props.followingInProgress.some((id: any) => id === u.id)}
+                            ? <button disabled={props.followingInProgress.some((id: number) => id === u.id)}
                                       onClick={() => {props.unfollow(u.id)}}>UnFollow</button>
 
-                            : <button disabled={props.followingInProgress.some((id: any) => id === u.id)}
+                            : <button disabled={props.followingInProgress.some((id: number) => id === u.id)}
                                       onClick={() => {props.follow(u.id)}}>Follow</button>}
+
                                 </div>
                                 </span>
+
                 <span>
                                 <span>
-                                <div>{u.name}</div>
+
+                                    <div>{u.name}</div>
+
                                 <div>{u.status}</div>
+
                                 </span>
+
                                 <span>
-                                <div>{'u.location.country'}</div>
-                                <div>{'u.location.city'}</div>
+                                <div>
+                                    {'u.location.country'}
+                                </div>
+
+                                <div>
+                                    {'u.location.city'}
+                                </div>
+
                                 </span>
-                                </span>
+                </span>
             </div>)
         }
 

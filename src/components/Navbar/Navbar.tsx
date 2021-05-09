@@ -22,7 +22,6 @@ const Navbar = () => (
                 <NavLink to='/users' className={styles.link} activeClassName={styles.activeLink}>Users</NavLink>
             </li>
         </ul>
-
     </nav>
 
 );

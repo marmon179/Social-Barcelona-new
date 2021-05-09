@@ -3,7 +3,12 @@
     flex-direction:column;
 
 }
+.wrapperImg img {
+    display: flex;
+    width: 896px;
+    margin: 0 0 10px 0;
 
+}
 
 .wrapperDialogs {
     display: flex;

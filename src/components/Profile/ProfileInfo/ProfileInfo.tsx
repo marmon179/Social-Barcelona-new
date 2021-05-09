@@ -1,39 +1,35 @@
 import React from 'react';
 import styles from './ProfileInfo.module.css'
-import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatus from './ProfileStatus';
 
 type ProfileInfoPropsType = {
     profile: any
-    status:any
-    updateStatus:(status: any) => void
+    status: string
+    updateStatus: (status: string) => void
 }
 
 const ProfileInfo: React.FC<ProfileInfoPropsType> = (props) => {
-        if (!props.profile) {
-            return <Preloader/>
-        }
+
         return (
             <div>
-                <div>
-                    <div className={styles.wrapperImg}>
-                        <img
-                            src="https://store.fcbarcelona.com/medias/Secciones-Desktop-copy.jpg?context=bWFzdGVyfHJvb3R8NDUyNDkyfGltYWdlL2pwZWd8aDQzL2g1OC84ODc4MzQwMDQ2ODc4L1NlY2Npb25lc19EZXNrdG9wIGNvcHkuanBnfGQwOWY1YzQ2OWYxZGY2ZDUyMzcxMThkMjgwNGNlNDBjZWM1YTc5ZDJlYzFkN2Y3ODFiYWI0NzEwNWVjMWI4MWU"
-                            alt="Barca"/>
-                    </div>
-                </div>
                 <div className={styles.wrapperInfo}>
+
                     <div className={styles.imgAvatar}>
                         <img src={props.profile.photos.large} alt="img"/>
                     </div>
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
-                    <div className={styles.wrapperTextInfo}>
-                        <span>
-                        <p>{props.profile.fullName}</p>
-                    </span>
-                        <span>
-                        <p>{props.profile.aboutMe}</p>
-                    </span>
+
+
+                    <div className={styles.wrapperStatus}>
+
+                        <div className={styles.status}>
+                            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                        </div>
+
+                        <div className={styles.wrapperTextInfo}>
+                            <h3>{props.profile.fullName}</h3>
+                            <h4>{props.profile.aboutMe}</h4>
+                        </div>
+
                     </div>
 
                 </div>

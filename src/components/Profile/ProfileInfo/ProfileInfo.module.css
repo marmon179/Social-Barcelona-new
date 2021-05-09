@@ -1,28 +1,25 @@
-.wrapperImg {
-    margin: 0 0 10px 0;
-
-}
 
 .wrapperInfo {
     display: flex;
-    flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
 }
 
-.wrapperImg img {
-    display: flex;
-    width: 896px;
 
-}
 .wrapperTextInfo{
     display: flex;
     flex-direction: column;
-
-
 }
 
 .imgAvatar img{
     margin: 0 20px 0 0 ;
+}
 
+wrapperStatus{
+    display: flex;
+    flex-direction: column;
+}
+
+.status {
+    font-size: 24px;
+    font-weight: bold;
 }

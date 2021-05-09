@@ -1,10 +1,10 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import {addPostDialogAC, InitialStateTypeDialogs} from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
 import {AppStateType} from '../../redux/redux-store';
 import {withAuthRedirect} from '../../hoc/withAuthRedirect';
-import {compose} from 'redux';
+import {compose, Dispatch} from 'redux';
 
 type MapStatePropsType = InitialStateTypeDialogs
 
@@ -15,16 +15,13 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        addPost: (newMessageBody:any) => {
+        addPost: (newMessageBody: string) => {
             dispatch(addPostDialogAC(newMessageBody))
         }
     }
 }
 
-export default compose<React.ComponentType>(
-    connect(mapStateToProps, mapDispatchToProps),
-    withAuthRedirect
-)(Dialogs)
+export default compose<React.ComponentType>(connect(mapStateToProps, mapDispatchToProps), withAuthRedirect)(Dialogs)
 

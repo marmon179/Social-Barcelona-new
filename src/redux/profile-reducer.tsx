@@ -16,7 +16,6 @@ const initialState = {
         {id: 2, message: 'How are you?'},
         {id: 3, message: 'Very nice!!!'},
     ] as Array<MessageType>,
-    messageForNewPost: '',
     profile: null,
     status: ''
 
@@ -27,17 +26,11 @@ const profileReducer = (state: InitialStateTypeProfile = initialState, action: A
         case 'ADD-POST':
             const newPost: MessageType = {
                 id: 4,
-                message: state.messageForNewPost
+                message: action.newMessageBody
             };
             return {
                 ...state,
                 dialogsData: [...state.dialogsData, newPost],
-                messageForNewPost: ''
-            }
-        case 'UPDATE-NEW-POST-TEXT':
-            return {
-                ...state,
-                messageForNewPost: action.newText
             }
         case 'SET-STATUS':
             return {
@@ -56,10 +49,9 @@ const profileReducer = (state: InitialStateTypeProfile = initialState, action: A
 
 }
 
-export const addPostAC = () => ({type: 'ADD-POST'} as const)
+export const addPostAC = (newMessageBody:any) => ({type: 'ADD-POST',newMessageBody} as const)
 export const setUserProfile = (profile: null) => ({type: 'SET_USER_PROFILE', profile} as const)
 export const setStatus = (status: string) => ({type: 'SET-STATUS', status} as const)
-export const UpdateNewPostTextAction = (newText: string) => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText} as const)
 
 export const getUserProfile = (userId: any) => (dispatch: any) => {
     usersAPI.getUserProfile(userId)
