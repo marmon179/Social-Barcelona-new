@@ -1,14 +1,13 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import styles from './Dialogs.module.css'
 import {DialogItem, DialogsType,} from './DialogItem/DialogItem';
 import {Message, MessageType} from './Message/Message';
-import {Field, reduxForm, InjectedFormProps} from 'redux-form';
+import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 
 type DialogPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
     addPost: (newMessageBody:any) => void
-    onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
     isAuth: boolean
 }
 
