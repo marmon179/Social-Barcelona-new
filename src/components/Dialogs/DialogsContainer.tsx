@@ -12,7 +12,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogs: state.dialogsPage.dialogs,
         messages: state.dialogsPage.messages,
-        messageForNewPostDialog: state.dialogsPage.messageForNewPostDialog,
+        newMessageBody: state.dialogsPage.newMessageBody,
     }
 }
 
@@ -22,8 +22,8 @@ const mapDispatchToProps = (dispatch: any) => {
             const text = e.currentTarget.value
             dispatch(UpdateNewPostTextDialogAction(text))
         },
-        addPost: () => {
-            dispatch(addPostDialogAC())
+        addPost: (newMessageBody:any) => {
+            dispatch(addPostDialogAC(newMessageBody))
         }
     }
 }

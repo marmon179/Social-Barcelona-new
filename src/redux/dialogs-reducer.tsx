@@ -22,7 +22,7 @@ const initialState = {
         {id: 2, message: 'Hi!'},
         {id: 3, message: 'hello'},
     ] as Array<MessageType>,
-    messageForNewPostDialog: '',
+    newMessageBody: '',
 
 }
 
@@ -31,18 +31,18 @@ const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: A
         case 'ADD_POST_DIALOG':
             const newPost: MessageType = {
                 id: 4,
-                message: state.messageForNewPostDialog
+                message: action.newMessageBody
             };
             return {
                 ...state,
                 messages: [...state.messages, newPost],
-                messageForNewPostDialog: ''
+                newMessageBody: ''
             }
 
         case 'UPDATE_NEW_POST_TEXT_DIALOG':
             return {
                 ...state,
-                messageForNewPostDialog: action.newText
+                newMessageBody: action.newText
             }
         default:
             return state
@@ -50,7 +50,7 @@ const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: A
 
 }
 
-export const addPostDialogAC = () => ({type: 'ADD_POST_DIALOG'} as const)
+export const addPostDialogAC = (newMessageBody: any) => ({type: 'ADD_POST_DIALOG', newMessageBody} as const)
 export const UpdateNewPostTextDialogAction = (newText: string) => ({
     type: 'UPDATE_NEW_POST_TEXT_DIALOG',
     newText: newText

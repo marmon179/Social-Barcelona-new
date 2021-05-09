@@ -22,7 +22,7 @@ export type ProfilePageType = {
 export type DialogPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
-    messageForNewPostDialog: string
+    newMessageBody: string
 }
 type MessageType = {
     message: string
@@ -73,7 +73,7 @@ export const store: StoreType = {
                 {id: 2, message: 'Hi!'},
                 {id: 3, message: 'hello'},
             ],
-            messageForNewPostDialog: '',
+            newMessageBody: '',
         }
     },
     _onChange() {
