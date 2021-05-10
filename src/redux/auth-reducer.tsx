@@ -3,7 +3,7 @@ import {Dispatch} from 'redux';
 import {stopSubmit} from 'redux-form';
 
 export type InitialStateTypeAuth = {
-    userId: null
+    userId: string | null
     email: null
     login: null
     isAuth: boolean
