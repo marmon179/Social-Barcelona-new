@@ -1,4 +1,5 @@
 import {authAPI} from '../api/api';
+import {Dispatch} from 'redux';
 
 export type InitialStateTypeAuth = {
     userId: null
@@ -17,7 +18,7 @@ type DataPropsType = {
 
 type ActionsTypes = {
     type: string
-    data: DataPropsType
+    payload: DataPropsType
 
 }
 
@@ -33,24 +34,41 @@ const authReducer = (state: InitialStateTypeAuth = initialState, action: Actions
         case 'SET-USER-DATA':
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.payload,
             }
         default:
             return state;
     }
 }
 
-export const setAuthUserDataAC = (userID: number, email: string, login: string) => ({
+export const setAuthUserDataAC = (userID: null, email: null, login: null, isAuth: boolean) => ({
     type: 'SET-USER-DATA',
-    data: {userID, email, login}
+    payload: {userID, email, login, isAuth}
 } as const)
-export const getAuthUserData = () => (dispatch: any) => {
+export const getAuthUserData = () => (dispatch: Dispatch) => {
     return authAPI.me()
         .then(response => {
             if (response.data.resultCode === 0) {
                 let {id, login, email} = response.data.data
-                dispatch(setAuthUserDataAC(id, email, login))
+                dispatch(setAuthUserDataAC(id, email, login, true))
+            }
+        })
+}
+
+export const login = (email: string, password: number, rememberMe: boolean) => (dispatch: any) => {
+    authAPI.login(email, password, rememberMe)
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(getAuthUserData())
+            }
+        })
+}
+
+export const logout = () => (dispatch: any) => {
+    authAPI.logout()
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setAuthUserDataAC(null, null, null, false))
             }
         })
 }
