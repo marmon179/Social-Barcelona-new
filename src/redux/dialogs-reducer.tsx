@@ -1,5 +1,3 @@
-import {ActionsTypes} from './state/store';
-
 type MessageType = {
     message: string
     id: number
@@ -25,7 +23,7 @@ const initialState = {
 
 }
 
-const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: ActionsTypes): InitialStateTypeDialogs => {
+const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: DialogsActionsTypes): InitialStateTypeDialogs => {
     switch (action.type) {
         case 'ADD_POST_DIALOG':
             const newPost: MessageType = {
@@ -42,5 +40,8 @@ const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: A
 }
 
 export const addPostDialogAC = (newMessageBody: any) => ({type: 'ADD_POST_DIALOG', newMessageBody} as const)
+
+export type DialogsActionsTypes =
+    ReturnType<typeof addPostDialogAC>
 
 export default dialogsReducer

@@ -3,7 +3,7 @@ import styles from './Profile.module.css'
 import {PostsContainer} from './Posts/PostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import Preloader from '../common/Preloader/Preloader';
-import {ProfilePageType} from '../../redux/state/store';
+import {ProfilePageType} from './ProfileContainer';
 
 type ProfilePropsType = {
     profile: ProfilePageType | null

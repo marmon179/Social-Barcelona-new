@@ -18,6 +18,7 @@ type DataPropsType = {
 }
 
 type ActionsTypes = {
+
     type: string
     payload: DataPropsType
 

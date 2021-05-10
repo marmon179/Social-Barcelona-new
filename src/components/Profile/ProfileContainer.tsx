@@ -5,9 +5,14 @@ import {AppStateType} from '../../redux/redux-store';
 import {getStatus, getUserProfile, updateStatus} from '../../redux/profile-reducer';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import {withAuthRedirect} from '../../hoc/withAuthRedirect';
-import {ProfilePageType} from '../../redux/state/store';
 import {compose} from 'redux';
+import {MessageType} from './Posts/Post/Post';
 
+export type ProfilePageType = {
+    dialogsData: Array<MessageType>
+    profile: null
+    status: string
+}
 
 type PathParamsType = {
     userId: string

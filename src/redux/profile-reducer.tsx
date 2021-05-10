@@ -1,6 +1,6 @@
-import {ActionsTypes} from './state/store';
 import {profileAPI, usersAPI} from '../api/api';
 import {Dispatch} from 'redux';
+import {ActionsTypes} from './redux-store';
 
 
 export type InitialStateTypeProfile = typeof initialState
