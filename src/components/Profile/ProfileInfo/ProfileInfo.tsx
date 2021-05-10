@@ -21,13 +21,13 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = (props) => {
 
                     <div className={styles.wrapperStatus}>
 
-                        <div className={styles.status}>
-                            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                        <div className={styles.wrapperTextInfo}>
+                            <div className={styles.name}>{props.profile.fullName}</div>
+                            <h4>{props.profile.aboutMe}</h4>
                         </div>
 
-                        <div className={styles.wrapperTextInfo}>
-                            <h3>{props.profile.fullName}</h3>
-                            <h4>{props.profile.aboutMe}</h4>
+                        <div className={styles.status}>
+                            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                         </div>
 
                     </div>

@@ -1,6 +1,7 @@
 .header {
-    display: grid;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     background-image: url('https://www.underconsideration.com/brandnew/archives/fc_barcelona_patterns_01.jpg');
 
     grid-area: header;
@@ -9,12 +10,24 @@
 
 .header img {
     width: 60px;
-    padding: 10px;
+    margin-left: 10px;
 }
 
 .loginBlock {
-    float: right;
+    margin-right: 10px;
 }
+
 .loginBlock a {
     color: white;
+}
+
+.login {
+    margin-right: 5px;
+    font-family: Arial;
+    font-weight: 400;
+    height: 1.2rem;
+    color: hsla(0, 0%, 100%, .6);
+    font-size: 1rem;
+    line-height: 1.2rem;
+    text-transform: uppercase;
 }

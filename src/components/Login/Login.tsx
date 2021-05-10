@@ -34,7 +34,7 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
             </div>}
 
             <div>
-                <button>Login</button>
+                <button >Login</button>
             </div>
         </form>
     )

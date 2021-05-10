@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import styles from './Header.module.css'
+import {Button} from '@material-ui/core';
 
 type HeaderPropsType = {
     isAuth: boolean
@@ -19,8 +20,11 @@ const Header = (props: HeaderPropsType) => (
 
         <div className={styles.loginBlock}>
             {props.isAuth
-                ? <div>{props.login} - <button onClick={props.logout}>Log out</button></div>
-                : <NavLink to={'/login'}>Login</NavLink>}
+                ? <div>
+                    <span className={styles.login}>{props.login}</span>
+                    <Button variant="contained" color="secondary" onClick={props.logout}>Log out</Button>
+                </div>
+                : <NavLink to={'/login'} className={styles.login}>Login</NavLink>}
         </div>
 
     </div>
