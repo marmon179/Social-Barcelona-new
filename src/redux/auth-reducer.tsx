@@ -7,21 +7,17 @@ export type InitialStateTypeAuth = {
     email: null
     login: null
     isAuth: boolean
-
 }
 
 type DataPropsType = {
     userId: null
     email: null
     login: null
-
 }
 
-type ActionsTypes = {
-
+export type AuthActionType = {
     type: string
     payload: DataPropsType
-
 }
 
 const initialState: InitialStateTypeAuth = {
@@ -31,7 +27,7 @@ const initialState: InitialStateTypeAuth = {
     isAuth: false
 }
 
-const authReducer = (state: InitialStateTypeAuth = initialState, action: ActionsTypes): InitialStateTypeAuth => {
+const authReducer = (state: InitialStateTypeAuth = initialState, action: AuthActionType): InitialStateTypeAuth => {
     switch (action.type) {
         case 'SET-USER-DATA':
             return {
@@ -45,20 +41,18 @@ const authReducer = (state: InitialStateTypeAuth = initialState, action: Actions
 
 export const setAuthUserDataAC = (userID: null, email: null, login: null, isAuth: boolean) => ({
     type: 'SET-USER-DATA',
-    payload: {userID, email, login, isAuth}
-} as const)
-export const getAuthUserData = () => (dispatch: Dispatch) => {
-    return authAPI.me()
+    payload: {userID, email, login, isAuth}} as const)
+
+export const getAuthUserData = () => (dispatch: Dispatch) => authAPI.me()
         .then(response => {
             if (response.data.resultCode === 0) {
                 let {id, login, email} = response.data.data
                 dispatch(setAuthUserDataAC(id, email, login, true))
             }
         })
-}
 
-export const login = (email: string, password: number, rememberMe: boolean) => (dispatch: any) => {
 
+export const login = (email: string, password: number, rememberMe: boolean) => (dispatch: Dispatch<any>) => {
 
     authAPI.login(email, password, rememberMe)
         .then(response => {
@@ -71,7 +65,7 @@ export const login = (email: string, password: number, rememberMe: boolean) => (
         })
 }
 
-export const logout = () => (dispatch: any) => {
+export const logout = () => (dispatch:Dispatch) => {
     authAPI.logout()
         .then(response => {
             if (response.data.resultCode === 0) {
