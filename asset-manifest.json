@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/Social-Barcelona-new/static/css/main.d66ef4e5.chunk.css",
-    "main.js": "/Social-Barcelona-new/static/js/main.23de0e9e.chunk.js",
-    "main.js.map": "/Social-Barcelona-new/static/js/main.23de0e9e.chunk.js.map",
-    "runtime-main.js": "/Social-Barcelona-new/static/js/runtime-main.213d345f.js",
-    "runtime-main.js.map": "/Social-Barcelona-new/static/js/runtime-main.213d345f.js.map",
-    "static/js/2.4627918f.chunk.js": "/Social-Barcelona-new/static/js/2.4627918f.chunk.js",
-    "static/js/2.4627918f.chunk.js.map": "/Social-Barcelona-new/static/js/2.4627918f.chunk.js.map",
-    "static/js/3.9d98e86c.chunk.js": "/Social-Barcelona-new/static/js/3.9d98e86c.chunk.js",
-    "static/js/3.9d98e86c.chunk.js.map": "/Social-Barcelona-new/static/js/3.9d98e86c.chunk.js.map",
+    "main.css": "/Social-Barcelona-new/static/css/main.6a554769.chunk.css",
+    "main.js": "/Social-Barcelona-new/static/js/main.eed3d613.chunk.js",
+    "main.js.map": "/Social-Barcelona-new/static/js/main.eed3d613.chunk.js.map",
+    "runtime-main.js": "/Social-Barcelona-new/static/js/runtime-main.748f0393.js",
+    "runtime-main.js.map": "/Social-Barcelona-new/static/js/runtime-main.748f0393.js.map",
+    "static/js/2.8e8b6234.chunk.js": "/Social-Barcelona-new/static/js/2.8e8b6234.chunk.js",
+    "static/js/2.8e8b6234.chunk.js.map": "/Social-Barcelona-new/static/js/2.8e8b6234.chunk.js.map",
+    "static/js/3.e9d11ca7.chunk.js": "/Social-Barcelona-new/static/js/3.e9d11ca7.chunk.js",
+    "static/js/3.e9d11ca7.chunk.js.map": "/Social-Barcelona-new/static/js/3.e9d11ca7.chunk.js.map",
     "index.html": "/Social-Barcelona-new/index.html",
-    "static/css/main.d66ef4e5.chunk.css.map": "/Social-Barcelona-new/static/css/main.d66ef4e5.chunk.css.map",
-    "static/js/2.4627918f.chunk.js.LICENSE.txt": "/Social-Barcelona-new/static/js/2.4627918f.chunk.js.LICENSE.txt",
+    "static/css/main.6a554769.chunk.css.map": "/Social-Barcelona-new/static/css/main.6a554769.chunk.css.map",
+    "static/js/2.8e8b6234.chunk.js.LICENSE.txt": "/Social-Barcelona-new/static/js/2.8e8b6234.chunk.js.LICENSE.txt",
     "static/media/Ball-1s-200px.0c804b5d.svg": "/Social-Barcelona-new/static/media/Ball-1s-200px.0c804b5d.svg",
     "static/media/user-male.3759889a.png": "/Social-Barcelona-new/static/media/user-male.3759889a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.213d345f.js",
-    "static/js/2.4627918f.chunk.js",
-    "static/css/main.d66ef4e5.chunk.css",
-    "static/js/main.23de0e9e.chunk.js"
+    "static/js/runtime-main.748f0393.js",
+    "static/js/2.8e8b6234.chunk.js",
+    "static/css/main.6a554769.chunk.css",
+    "static/js/main.eed3d613.chunk.js"
   ]
 }
