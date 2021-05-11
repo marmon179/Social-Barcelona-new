@@ -10,7 +10,9 @@ type DialogPageType = {
     addPost: (newMessageBody: string) => void
     isAuth: boolean
 }
-
+export type NewMessageFormValuesType = {
+    newMessageBody: string
+}
 export const Dialogs: React.FC<DialogPageType> = (props) => {
 
     const elementDialogs = props.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
@@ -18,7 +20,7 @@ export const Dialogs: React.FC<DialogPageType> = (props) => {
 
     const img = 'https://www.fcbarcelona.com/photo-resources/2020/11/02/d2c1d3ab-437b-400a-8df2-3e420b9f0799/imatge_avatars02.jpg?width=1024&height=448'
 
-    const addNewMessage = (values: any) => {
+    const addNewMessage = (values: NewMessageFormValuesType) => {
         props.addPost(values.newMessageBody)
     }
     return (

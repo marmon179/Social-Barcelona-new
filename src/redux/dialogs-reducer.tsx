@@ -39,7 +39,7 @@ const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: D
 
 }
 
-export const addPostDialogAC = (newMessageBody: any) => ({type: 'ADD_POST_DIALOG', newMessageBody} as const)
+export const addPostDialogAC = (newMessageBody: string) => ({type: 'ADD_POST_DIALOG', newMessageBody} as const)
 
 export type DialogsActionsTypes =
     ReturnType<typeof addPostDialogAC>
