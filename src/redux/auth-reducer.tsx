@@ -1,7 +1,7 @@
 import {authAPI} from '../api/api';
-import {Dispatch} from 'redux';
-import {stopSubmit} from 'redux-form';
-import {AppThunk} from './redux-store';
+import {FormAction, stopSubmit} from 'redux-form';
+import {AppStateType, AppThunk} from './redux-store';
+import {ThunkDispatch} from 'redux-thunk';
 
 export type InitialStateTypeAuth = {
     userId: string | null
@@ -47,7 +47,8 @@ export const getAuthUserData = (): AppThunk => (dispatch) => authAPI.me()
     })
 
 
-export const login = (email: string, password: number, rememberMe: boolean) => (dispatch: Dispatch<any>) => {
+export const login = (email: string, password: number, rememberMe: boolean): AppThunk => (
+    dispatch: ThunkDispatch<AppStateType, unknown, AuthActionType | FormAction>) => {
 
     authAPI.login(email, password, rememberMe)
         .then(response => {
