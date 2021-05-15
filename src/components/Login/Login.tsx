@@ -8,11 +8,6 @@ import {Redirect} from 'react-router-dom';
 import {AppStateType} from '../../redux/redux-store';
 import style from '../common/FormsControls/FormsControls.module.css'
 
-type FormDataType = {
-    email: string
-    password: string
-    rememberMe: boolean
-}
 
 const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
@@ -34,7 +29,7 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
             </div>}
 
             <div>
-                <button >Login</button>
+                <button>Login</button>
             </div>
         </form>
     )
@@ -62,3 +57,9 @@ const mapStateToProps = (state: AppStateType) => ({
 })
 
 export default connect(mapStateToProps, {login})(Login);
+//types
+type FormDataType = {
+    email: string
+    password: string
+    rememberMe: boolean
+}

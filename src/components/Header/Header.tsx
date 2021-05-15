@@ -2,13 +2,9 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import styles from './Header.module.css'
 import {Button} from '@material-ui/core';
+import {HeaderPropsType} from './HeaderContainer';
 
-type HeaderPropsType = {
-    isAuth: boolean
-    login: null
-    logout: () => void
 
-}
 
 const img = 'https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png'
 
