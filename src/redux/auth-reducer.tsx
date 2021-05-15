@@ -3,7 +3,7 @@ import {stopSubmit} from 'redux-form';
 import {AppThunk} from './redux-store';
 
 
-const initialState: InitialStateTypeAuth = {
+const initialState = {
     userId: null,
     email: null,
     login: null,
@@ -56,11 +56,6 @@ export const logout = (): AppThunk => (dispatch) => {
 }
 
 //types
-export type InitialStateTypeAuth = {
-    userId: string | null
-    email: null
-    login: null
-    isAuth: boolean
-}
+export type InitialStateTypeAuth = typeof initialState
 export type AuthActionType =
     ReturnType<typeof setAuthUserDataAC>

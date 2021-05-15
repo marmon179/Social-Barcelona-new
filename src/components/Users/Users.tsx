@@ -5,17 +5,6 @@ import {InitialStateTypeUser} from '../../redux/users-reducer';
 import {NavLink} from 'react-router-dom';
 import {Button} from '@material-ui/core';
 
-export type UsersType = {
-    totalUsersCount: number
-    pageSize: number
-    currentPage: number
-    onPageChanged: (pageNumber: number) => void
-    users: InitialStateTypeUser
-    follow: (userId: string) => void
-    unfollow: (userId: string) => void
-    toggleFollowingProgress: (isFetching: boolean, id: number) => void
-    followingInProgress: any
-}
 
 export const Users = (props: UsersType) => {
 
@@ -69,4 +58,16 @@ export const Users = (props: UsersType) => {
         }</div>
 
     </div>
+}
+//types
+export type UsersType = {
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    onPageChanged: (pageNumber: number) => void
+    users: InitialStateTypeUser
+    follow: (userId: string) => void
+    unfollow: (userId: string) => void
+    toggleFollowingProgress: (isFetching: boolean, id: number) => void
+    followingInProgress: any
 }
