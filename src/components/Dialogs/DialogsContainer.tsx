@@ -1,6 +1,6 @@
 import React from 'react';
 import {addPostDialogAC, InitialStateTypeDialogs} from '../../redux/dialogs-reducer';
-import Dialogs from './Dialogs';
+import {Dialogs} from './Dialogs';
 import {connect, ConnectedProps} from 'react-redux';
 import {AppStateType} from '../../redux/redux-store';
 import {withAuthRedirect} from '../../hoc/withAuthRedirect';
