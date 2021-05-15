@@ -5,15 +5,12 @@ import {Button} from '@material-ui/core';
 import {HeaderPropsType} from './HeaderContainer';
 
 
-
 const img = 'https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png'
 
-const Header = (props: HeaderPropsType) => (
+export const Header = (props: HeaderPropsType) => (
 
     <div className={styles.header}>
-
         <img src={img} alt="Logo"/>
-
         <div className={styles.loginBlock}>
             {props.isAuth
                 ? <div>
@@ -26,4 +23,3 @@ const Header = (props: HeaderPropsType) => (
     </div>
 );
 
-export default Header;
