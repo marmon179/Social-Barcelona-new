@@ -4,9 +4,6 @@ import styles from '../Dialogs.module.css';
 import {Textarea} from '../../common/FormsControls/FormsControls';
 import {maxLengthCreator, required} from '../../../utils/validators/validators';
 
-type FormDataType = {
-    newMessageBody: string
-}
 
 const maxLength50 = maxLengthCreator(50)
 
@@ -24,3 +21,7 @@ export const AddMessageForm: React.FC<InjectedFormProps<FormDataType>> = (props)
     )
 }
 export const AddMessageFormRedux = reduxForm<FormDataType>({form: 'dialogAddMessageForm'})(AddMessageForm)
+//types
+type FormDataType = {
+    newMessageBody: string
+}
