@@ -1,23 +1,16 @@
 import React from 'react';
 
-type ProfileStatusPropsType = {
-    status: string
-    updateStatus: (status: any) => void
-}
 
-class ProfileStatus extends React.Component<ProfileStatusPropsType> {
-
+export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
     state = {
         editMode: false,
         status: this.props.status
     }
-
     activateEditMode = () => {
         this.setState({
             editMode: true
         })
     };
-
     deactivateEditMode = () => {
         this.setState({
             editMode: false
@@ -28,7 +21,6 @@ class ProfileStatus extends React.Component<ProfileStatusPropsType> {
         this.setState({
             status: e.currentTarget.value
         })
-
     }
 
     componentDidUpdate(prevProps: Readonly<ProfileStatusPropsType>, prevState: Readonly<{}>) {
@@ -40,7 +32,6 @@ class ProfileStatus extends React.Component<ProfileStatusPropsType> {
     }
 
     render() {
-
         return (
             <div>
                 {!this.state.editMode &&
@@ -59,4 +50,8 @@ class ProfileStatus extends React.Component<ProfileStatusPropsType> {
     }
 }
 
-export default ProfileStatus;
+//types
+type ProfileStatusPropsType = {
+    status: string
+    updateStatus: (status: any) => void
+}

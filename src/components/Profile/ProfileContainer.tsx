@@ -9,7 +9,6 @@ import {compose} from 'redux';
 import {MessageType} from './Posts/Post/Post';
 
 class ProfileContainer extends React.Component<PropsType> {
-
     componentDidMount() {
         let userId = this.props.match.params.userId
         if (!userId) {
@@ -22,7 +21,6 @@ class ProfileContainer extends React.Component<PropsType> {
             this.props.getStatus(userId)
         }
     }
-
     render() {
         return (
             <Profile {...this.props} profile={this.props.profile} status={this.props.status}

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Profile.module.css'
 import {PostsContainer} from './Posts/PostsContainer';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
+import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import Preloader from '../common/Preloader/Preloader';
 import {ProfilePageType} from './ProfileContainer';
 

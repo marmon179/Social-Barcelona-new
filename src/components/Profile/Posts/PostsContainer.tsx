@@ -1,11 +1,10 @@
 import React from 'react';
-import Posts from './Posts';
+import {Posts} from './Posts';
 import {addPost, InitialStateTypeProfile} from '../../../redux/profile-reducer';
-import {connect} from 'react-redux';
+import {connect, ConnectedProps} from 'react-redux';
 import {AppStateType} from '../../../redux/redux-store';
 import {Dispatch} from 'redux';
 
-type MapStatePropsType = InitialStateTypeProfile
 
 const mapStateProps = (state: AppStateType): MapStatePropsType => {
     return {
@@ -14,7 +13,6 @@ const mapStateProps = (state: AppStateType): MapStatePropsType => {
         status: state.profilePage.status
     }
 }
-
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         addPost: (newMessageBody: string) => {
@@ -22,4 +20,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         },
     }
 }
-export const PostsContainer = connect(mapStateProps, mapDispatchToProps)(Posts)
+const connector = connect(mapStateProps, mapDispatchToProps)
+export const PostsContainer = connector(Posts)
+//types
+export type PostsPropsType = ConnectedProps<typeof connector>
+type MapStatePropsType = InitialStateTypeProfile
+
