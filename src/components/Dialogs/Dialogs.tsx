@@ -47,6 +47,7 @@ export const Dialogs: React.FC<DialogPageType> = (props) => {
             </div>
         </div>
     )
+
 };
 
 export default Dialogs;

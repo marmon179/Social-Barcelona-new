@@ -1,32 +1,21 @@
-type MessageType = {
-    message: string
-    id: number
-}
-type DialogsType = {
-    name: string,
-    id: number,
-}
-export type InitialStateTypeDialogs = typeof initialState
-
-
 const initialState = {
     dialogs: [
         {id: 1, name: 'Sascha'},
         {id: 2, name: 'Maksim'},
         {id: 3, name: 'Katia'},
-    ] as Array<DialogsType>,
+    ],
     messages: [
         {id: 1, message: 'Hello'},
         {id: 2, message: 'Hi!'},
         {id: 3, message: 'hello'},
-    ] as Array<MessageType>,
+    ]
 
 }
 
-const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: DialogsActionsTypes): InitialStateTypeDialogs => {
+export const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: DialogsActionsTypes): InitialStateTypeDialogs => {
     switch (action.type) {
         case 'ADD_POST_DIALOG':
-            const newPost: MessageType = {
+            const newPost = {
                 id: 4,
                 message: action.newMessageBody
             };
@@ -36,12 +25,11 @@ const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: D
             }
     }
     return state
-
 }
-
+//actions
 export const addPostDialogAC = (newMessageBody: string) => ({type: 'ADD_POST_DIALOG', newMessageBody} as const)
+//types
+export type DialogsActionsTypes = ReturnType<typeof addPostDialogAC>
+export type InitialStateTypeDialogs = typeof initialState
 
-export type DialogsActionsTypes =
-    ReturnType<typeof addPostDialogAC>
 
-export default dialogsReducer

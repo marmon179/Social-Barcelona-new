@@ -2,16 +2,6 @@ import {authAPI} from '../api/api';
 import {stopSubmit} from 'redux-form';
 import {AppThunk} from './redux-store';
 
-export type InitialStateTypeAuth = {
-    userId: string | null
-    email: null
-    login: null
-    isAuth: boolean
-}
-
-export type AuthActionType =
-    ReturnType<typeof setAuthUserDataAC>
-
 
 const initialState: InitialStateTypeAuth = {
     userId: null,
@@ -20,7 +10,7 @@ const initialState: InitialStateTypeAuth = {
     isAuth: false
 }
 
-const authReducer = (state: InitialStateTypeAuth = initialState, action: AuthActionType): InitialStateTypeAuth => {
+export const authReducer = (state: InitialStateTypeAuth = initialState, action: AuthActionType): InitialStateTypeAuth => {
     switch (action.type) {
         case 'SET-USER-DATA':
             return {
@@ -31,12 +21,13 @@ const authReducer = (state: InitialStateTypeAuth = initialState, action: AuthAct
             return state;
     }
 }
-
+//actions
 export const setAuthUserDataAC = (userID: null, email: null, login: null, isAuth: boolean) => ({
     type: 'SET-USER-DATA',
     payload: {userID, email, login, isAuth}
 } as const)
 
+//thunks
 export const getAuthUserData = (): AppThunk => (dispatch) => authAPI.me()
     .then(response => {
         if (response.data.resultCode === 0) {
@@ -44,8 +35,6 @@ export const getAuthUserData = (): AppThunk => (dispatch) => authAPI.me()
             dispatch(setAuthUserDataAC(id, email, login, true))
         }
     })
-
-
 export const login = (email: string, password: number, rememberMe: boolean): AppThunk => dispatch => {
     authAPI.login(email, password, rememberMe)
         .then(response => {
@@ -53,11 +42,10 @@ export const login = (email: string, password: number, rememberMe: boolean): App
                 dispatch(getAuthUserData())
             } else {
                 const message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
-                dispatch(stopSubmit('login', {_error: message})as AuthActionType)
+                dispatch(stopSubmit('login', {_error: message}) as AuthActionType)
             }
         })
 }
-
 export const logout = (): AppThunk => (dispatch) => {
     authAPI.logout()
         .then(response => {
@@ -67,4 +55,12 @@ export const logout = (): AppThunk => (dispatch) => {
         })
 }
 
-export default authReducer
+//types
+export type InitialStateTypeAuth = {
+    userId: string | null
+    email: null
+    login: null
+    isAuth: boolean
+}
+export type AuthActionType =
+    ReturnType<typeof setAuthUserDataAC>

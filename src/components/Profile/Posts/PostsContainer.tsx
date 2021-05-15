@@ -1,6 +1,6 @@
 import React from 'react';
 import Posts from './Posts';
-import {addPostAC, InitialStateTypeProfile} from '../../../redux/profile-reducer';
+import {addPost, InitialStateTypeProfile} from '../../../redux/profile-reducer';
 import {connect} from 'react-redux';
 import {AppStateType} from '../../../redux/redux-store';
 import {Dispatch} from 'redux';
@@ -18,7 +18,7 @@ const mapStateProps = (state: AppStateType): MapStatePropsType => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         addPost: (newMessageBody: string) => {
-            dispatch(addPostAC(newMessageBody))
+            dispatch(addPost(newMessageBody))
         },
     }
 }

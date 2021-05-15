@@ -1,41 +1,9 @@
 import {usersAPI} from '../api/api';
 import {AppThunk} from './redux-store';
 
-export type InitialStateTypeUser = {
-    users: Array<UserType>
-    pageSize: number
-    totalUsersCount: number
-    currentPage: number
-    isFetching: boolean
-    followingInProgress: Array<string>
 
-}
-
-export type UserType = {
-    id: string
-    photos: string
-    name: string
-    followed: boolean
-    status: string
-    location: LocationType
-}
-type LocationType = {
-    city: string
-    country: string
-}
-
-export type UserActionType =
-    ReturnType<typeof followSuccess> |
-    ReturnType<typeof unfollowSuccess> |
-    ReturnType<typeof setUser> |
-    ReturnType<typeof setCurrentPage> |
-    ReturnType<typeof setTotalUsersCount> |
-    ReturnType<typeof toggleIsFetching> |
-    ReturnType<typeof toggleFollowingProgress>
-
-
-const initialState: InitialStateTypeUser = {
-    users: [],
+const initialState = {
+    users: [] as Array<UserType>,
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
@@ -43,7 +11,7 @@ const initialState: InitialStateTypeUser = {
     followingInProgress: []
 }
 
-const usersReducer = (state: InitialStateTypeUser = initialState, action: UserActionType): InitialStateTypeUser => {
+export const usersReducer = (state: InitialStateTypeUser = initialState, action: UserActionType): InitialStateTypeUser => {
     switch (action.type) {
         case 'FOLLOW':
             return {
@@ -89,7 +57,7 @@ const usersReducer = (state: InitialStateTypeUser = initialState, action: UserAc
     }
 
 }
-
+//actions
 export const followSuccess = (userID: string) => ({type: 'FOLLOW', userID} as const)
 export const unfollowSuccess = (userID: string) => ({type: 'UNFOLLOW', userID} as const)
 export const setUser = (users: Array<UserType>) => ({type: 'SET_USERS', users} as const)
@@ -107,12 +75,9 @@ export const toggleFollowingProgress = (isFetching: boolean, userID: string | nu
     isFetching,
     userID
 } as const)
-
-
-export const getUsers = (currentPage: number, pageSize: number):AppThunk => (dispatch) => {
-
+//thunks
+export const getUsers = (currentPage: number, pageSize: number): AppThunk => (dispatch) => {
     dispatch(toggleIsFetching(true))
-
     usersAPI.getUsers(currentPage, pageSize)
         .then(data => {
             dispatch(toggleIsFetching(false))
@@ -120,8 +85,7 @@ export const getUsers = (currentPage: number, pageSize: number):AppThunk => (dis
             dispatch(setTotalUsersCount(data.totalCount))
         })
 }
-
-export const follow = (userId: number & string):AppThunk => (dispatch) => {
+export const follow = (userId: number & string): AppThunk => (dispatch) => {
     dispatch(toggleFollowingProgress(true, userId));
     usersAPI.follow(userId)
         .then(response => {
@@ -131,9 +95,7 @@ export const follow = (userId: number & string):AppThunk => (dispatch) => {
             dispatch(toggleFollowingProgress(false, userId))
         })
 }
-
-export const unfollow = (userId: number & string):AppThunk => (dispatch) => {
-
+export const unfollow = (userId: number & string): AppThunk => (dispatch) => {
     dispatch(toggleFollowingProgress(true, userId))
     usersAPI.unfollow(userId)
         .then(response => {
@@ -143,6 +105,25 @@ export const unfollow = (userId: number & string):AppThunk => (dispatch) => {
             dispatch(toggleFollowingProgress(false, userId))
         })
 }
+//types
+export type InitialStateTypeUser = typeof initialState
+export type UserType = {
+    id: string
+    photos: string
+    name: string
+    followed: boolean
+    status: string
+    location: {
+        city: string
+        country: string
+    }
+}
+export type UserActionType =
+    ReturnType<typeof followSuccess> |
+    ReturnType<typeof unfollowSuccess> |
+    ReturnType<typeof setUser> |
+    ReturnType<typeof setCurrentPage> |
+    ReturnType<typeof setTotalUsersCount> |
+    ReturnType<typeof toggleIsFetching> |
+    ReturnType<typeof toggleFollowingProgress>
 
-
-export default usersReducer
