@@ -1,36 +1,38 @@
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-image: url('https://www.underconsideration.com/brandnew/archives/fc_barcelona_patterns_01.jpg');
+.checkbox {
+    appearance: none;
 
-    grid-area: header;
-    grid-template-columns: 9fr 3fr;
-}
+    width: 20px;
+    height: 20px;
 
-.header img {
-    width: 60px;
     margin-left: 10px;
+    background: #6486c9;
+    cursor: pointer;
 }
 
-.loginBlock {
-    margin-right: 10px;
+.checkbox:checked {
+    appearance: none;
+
+    background: url('../../Img/cgedked.jpg') 0 0/20px 20px no-repeat;
+
 }
 
-.loginBlock a {
-    color: white;
+.superInput {
+    margin: 10px;
+    width: 200px;
+    border: 2px solid #dadada;
+    border-radius: 7px;
+    font-size: 20px;
+    padding: 5px;
+}
+.superInput:focus {
+    outline: none;
+    border-color: #154284;
+    box-shadow: 0 0 10px #154284;
 }
 
-.login {
-    margin-right: 5px;
-    font-family: Arial;
-    font-weight: 400;
-    height: 1.2rem;
-    color: hsla(0, 0%, 100%, .6);
-    font-size: 1rem;
-    line-height: 1.2rem;
-    text-transform: uppercase;
-}
+
+
+
 .button {
     text-align: center;
     text-transform: uppercase;

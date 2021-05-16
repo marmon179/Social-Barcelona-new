@@ -3,7 +3,6 @@ import s from './Users.module.css';
 import userPhoto from '../../assets/images/user-male.png';
 import {InitialStateTypeUser} from '../../redux/users-reducer';
 import {NavLink} from 'react-router-dom';
-import {Button} from '@material-ui/core';
 
 
 export const Users = (props: UsersType) => {
@@ -40,17 +39,17 @@ export const Users = (props: UsersType) => {
 
 
                     {u.followed
-                        ? <Button disabled={props.followingInProgress.some((id: number) => id === u.id)}
-                                  variant="contained" color="secondary"
+                        ? <button disabled={props.followingInProgress.some((id: number) => id === u.id)}
+                                  className={s.button}
                                   onClick={() => {
                                       props.unfollow(u.id)
-                                  }}>UnFollow</Button>
+                                  }}>UnFollow</button>
 
-                        : <Button disabled={props.followingInProgress.some((id: number) => id === u.id)}
-                                  variant="contained" color="primary"
+                        : <button disabled={props.followingInProgress.some((id: number) => id === u.id)}
+                                 className={s.button}
                                   onClick={() => {
                                       props.follow(u.id)
-                                  }}>Follow</Button>}
+                                  }}>Follow</button>}
 
                 </div>
 

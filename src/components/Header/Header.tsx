@@ -1,7 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import styles from './Header.module.css'
-import {Button} from '@material-ui/core';
 import {HeaderPropsType} from './HeaderContainer';
 
 
@@ -15,7 +14,7 @@ export const Header = (props: HeaderPropsType) => (
             {props.isAuth
                 ? <div>
                     <span className={styles.login}>{props.login}</span>
-                    <Button variant="contained" color="secondary" onClick={props.logout}>Log out</Button>
+                    <button className={styles.button} onClick={props.logout}>Log out</button>
                 </div>
                 : <NavLink to={'/login'} className={styles.login}>Login</NavLink>}
         </div>

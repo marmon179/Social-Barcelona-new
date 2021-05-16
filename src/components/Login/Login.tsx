@@ -6,7 +6,7 @@ import {connect, ConnectedProps} from 'react-redux';
 import {login} from '../../redux/auth-reducer';
 import {Redirect} from 'react-router-dom';
 import {AppStateType} from '../../redux/redux-store';
-import style from '../common/FormsControls/FormsControls.module.css'
+import style from '../Login/Login.module.css'
 import {getIsAuth} from '../../redux/auth-selectors';
 
 
@@ -15,14 +15,18 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field placeholder={'Email'} name={'email'}
-                       component={Input} validate={[required]}/>
+                       component={Input} validate={[required]}
+                        className={style.superInput}
+                />
             </div>
             <div>
                 <Field placeholder={'Password'} name={'password'} type={'password'}
-                       component={Input} validate={[required]}/>
+                       component={Input} validate={[required]}
+                       className={style.superInput}
+                />
             </div>
             <div>
-                <Field type={'checkbox'} name={'rememberMe'} component={Input}/>
+                <Field className={style.checkbox} type={'checkbox'} name={'rememberMe'} component={Input}/>
             </div>
 
             {props.error && <div className={style.formSummaryError}>
@@ -30,7 +34,7 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
             </div>}
 
             <div>
-                <button>Login</button>
+                <button className={style.button}>Login</button>
             </div>
         </form>
     )
