@@ -42,13 +42,13 @@ export const addPost = (newMessageBody: string) => ({type: 'ADD-POST', newMessag
 export const setUserProfile = (profile: null) => ({type: 'SET_USER_PROFILE', profile} as const)
 export const setStatus = (status: string) => ({type: 'SET-STATUS', status} as const)
 //thunks
-export const getUserProfile = (userId: number): AppThunk => (dispatch) => {
+export const getUserProfile = (userId: string): AppThunk => (dispatch) => {
     usersAPI.getUserProfile(userId)
         .then(response => {
             dispatch(setUserProfile(response.data));
         })
 }
-export const getStatus = (userId: number): AppThunk => (dispatch) => {
+export const getStatus = (userId: string): AppThunk => (dispatch) => {
     profileAPI.getStatus(userId)
         .then(response => {
             dispatch(setStatus(response.data));

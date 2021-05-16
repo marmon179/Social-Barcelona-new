@@ -1,21 +1,20 @@
 import React, {ComponentType} from 'react';
 import {Profile} from './Profile';
-import {connect} from 'react-redux';
+import {connect, ConnectedProps} from 'react-redux';
 import {AppStateType} from '../../redux/redux-store';
 import {getStatus, getUserProfile, updateStatus} from '../../redux/profile-reducer';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 import {compose} from 'redux';
-import {MessageType} from './Posts/Post/Post';
 
-class ProfileContainer extends React.Component<PropsType> {
+class ProfileContainer extends React.Component<ProfilePropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
         if (!userId) {
             userId = this.props.authorizedUserId as string
-            if (!userId) {
-                this.props.history.push('/login')
-            }
+            // if (!userId) {
+            //     this.props.history.push('/login')
+            // }
         }
         if (userId != null) {
             this.props.getUserProfile(userId);
@@ -33,7 +32,7 @@ class ProfileContainer extends React.Component<PropsType> {
     }
 }
 
-const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
+const mapStateToProps = (state: AppStateType) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     authorizedUserId: state.auth.userId,
@@ -43,25 +42,9 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
 const connector = connect(mapStateToProps, {getUserProfile, getStatus, updateStatus})
 export default compose<ComponentType>(connector, withRouter, withAuthRedirect)(ProfileContainer)
 //types
-export type ProfilePageType = {
-    dialogsData: Array<MessageType>
-    profile: null
-    status: string
-}
+export type PropsType = ConnectedProps<typeof connector>
 type PathParamsType = {
     userId: string
 }
-type MapStatePropsType = {
-    profile: ProfilePageType | null
-    status: string
-    authorizedUserId: string | null
-    isAuth: boolean
-}
-type MapDispatchPropsType = {
-    getUserProfile: (userId: string) => void
-    getStatus: (userId: string) => void
-    updateStatus: (status: string) => void
-}
-type OwnPropsType = MapStatePropsType & MapDispatchPropsType
-type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType
+type ProfilePropsType = RouteComponentProps<PathParamsType> & PropsType
 

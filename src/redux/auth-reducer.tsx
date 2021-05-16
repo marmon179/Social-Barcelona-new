@@ -4,7 +4,7 @@ import {AppThunk} from './redux-store';
 
 
 const initialState = {
-    userId: null,
+    userId: null as null | string ,
     email: null,
     login: null,
     isAuth: false

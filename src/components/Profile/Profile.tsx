@@ -3,10 +3,10 @@ import styles from './Profile.module.css'
 import {PostsContainer} from './Posts/PostsContainer';
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import Preloader from '../common/Preloader/Preloader';
-import {ProfilePageType} from './ProfileContainer';
+import {PropsType} from './ProfileContainer';
 
 
-export const Profile: React.FC<ProfilePropsType> = (props) => {
+export const Profile = (props: PropsType) => {
     if (!props.profile) {
         return <Preloader/>
     }
@@ -25,11 +25,6 @@ export const Profile: React.FC<ProfilePropsType> = (props) => {
         </div>
     )
 }
-//types
-type ProfilePropsType = {
-    profile: ProfilePageType | null
-    status: string
-    updateStatus: (status: string) => void
-}
+
 
 
