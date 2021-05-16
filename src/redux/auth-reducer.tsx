@@ -28,13 +28,16 @@ export const setAuthUserDataAC = (userID: null, email: null, login: null, isAuth
 } as const)
 
 //thunks
-export const getAuthUserData = (): AppThunk => (dispatch) => authAPI.me()
-    .then(response => {
-        if (response.data.resultCode === 0) {
-            let {id, login, email} = response.data.data
-            dispatch(setAuthUserDataAC(id, email, login, true))
-        }
-    })
+export const getAuthUserData = (): AppThunk => (dispatch) => {
+    return authAPI.me()
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                let {id, login, email} = response.data.data
+                dispatch(setAuthUserDataAC(id, email, login, true))
+            }
+        })
+}
+
 export const login = (email: string, password: number, rememberMe: boolean): AppThunk => dispatch => {
     authAPI.login(email, password, rememberMe)
         .then(response => {

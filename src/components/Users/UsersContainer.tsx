@@ -1,13 +1,16 @@
 import React, {ComponentType} from 'react';
 import {connect, ConnectedProps} from 'react-redux';
 import {
-    followSuccess, getUsers, InitialStateTypeUser, setCurrentPage,
-    toggleFollowingProgress, unfollowSuccess
+    followSuccess,
+    getUsers,
+    InitialStateTypeUser,
+    setCurrentPage,
+    toggleFollowingProgress,
+    unfollowSuccess
 } from '../../redux/users-reducer';
 import {AppStateType} from '../../redux/redux-store';
 import {Users} from './Users';
 import Preloader from '../common/Preloader/Preloader';
-import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 import {compose} from 'redux';
 
 
@@ -54,7 +57,7 @@ const connector = connect(mapStateToProps, {
     follow: followSuccess, unfollow: unfollowSuccess,
     setCurrentPage, toggleFollowingProgress, getUsers
 })
-export default compose<ComponentType>(withAuthRedirect, connector)(UsersContainer)
+export default compose<ComponentType>(connector)(UsersContainer)
 //types
 type MapStatePropsType = InitialStateTypeUser
 export type UsersPropsType = ConnectedProps<typeof connector>
