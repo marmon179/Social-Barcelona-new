@@ -5,12 +5,13 @@ import {connect, ConnectedProps} from 'react-redux';
 import {AppStateType} from '../../redux/redux-store';
 import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 import {compose, Dispatch} from 'redux';
+import {getDialogs, getMessages} from '../../redux/dialogs-selectors';
 
 
 const mapStateToProps = (state: AppStateType) => {
     return {
-        dialogs: state.dialogsPage.dialogs,
-        messages: state.dialogsPage.messages,
+        dialogs: getDialogs(state),
+        messages: getMessages(state),
     }
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {

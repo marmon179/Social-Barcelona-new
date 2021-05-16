@@ -53,5 +53,5 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
 //types
 type ProfileStatusPropsType = {
     status: string
-    updateStatus: (status: any) => void
+    updateStatus: (status: string) => void
 }

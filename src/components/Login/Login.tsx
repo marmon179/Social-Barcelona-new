@@ -2,7 +2,7 @@ import React from 'react';
 import {InjectedFormProps, Field, reduxForm} from 'redux-form';
 import {Input} from '../common/FormsControls/FormsControls';
 import {required} from '../../utils/validators/validators';
-import {connect} from 'react-redux';
+import {connect, ConnectedProps} from 'react-redux';
 import {login} from '../../redux/auth-reducer';
 import {Redirect} from 'react-router-dom';
 import {AppStateType} from '../../redux/redux-store';
@@ -37,7 +37,7 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
 
 const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(LoginForm)
 
-const Login = (props: any) => {
+const Login = (props: LoginPropsType) => {
     const onSubmit = (formData: FormDataType) => {
         props.login(formData.email, formData.password, formData.rememberMe)
     }
@@ -55,11 +55,12 @@ const Login = (props: any) => {
 const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth
 })
-
-export default connect(mapStateToProps, {login})(Login);
+const connector = connect(mapStateToProps, {login})
+export default connector(Login);
 //types
+type LoginPropsType = ConnectedProps<typeof connector>
 type FormDataType = {
     email: string
-    password: string
+    password: number
     rememberMe: boolean
 }

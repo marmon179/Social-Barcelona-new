@@ -29,3 +29,4 @@ type ProfileInfoPropsType = {
     status: string
     updateStatus: (status: string) => void
 }
+
