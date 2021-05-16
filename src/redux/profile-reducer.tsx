@@ -48,7 +48,7 @@ export const getUserProfile = (userId: string): AppThunk => (dispatch) => {
             dispatch(setUserProfile(response.data));
         })
 }
-export const getStatus = (userId: string): AppThunk => (dispatch) => {
+export const getStatusTC = (userId: string): AppThunk => (dispatch) => {
     profileAPI.getStatus(userId)
         .then(response => {
             dispatch(setStatus(response.data));

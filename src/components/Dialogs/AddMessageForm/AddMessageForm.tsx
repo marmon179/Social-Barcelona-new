@@ -15,7 +15,7 @@ export const AddMessageForm: React.FC<InjectedFormProps<FormDataType>> = (props)
                        placeholder={'Enter your message'} validate={[required, maxLength50]}/>
             </div>
             <div>
-                <button>Add post</button>
+                <button className={styles.button}>Add post</button>
             </div>
         </form>
     )

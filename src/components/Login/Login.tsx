@@ -7,6 +7,7 @@ import {login} from '../../redux/auth-reducer';
 import {Redirect} from 'react-router-dom';
 import {AppStateType} from '../../redux/redux-store';
 import style from '../common/FormsControls/FormsControls.module.css'
+import {getIsAuth} from '../../redux/auth-selectors';
 
 
 const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
@@ -53,7 +54,7 @@ const Login = (props: LoginPropsType) => {
 };
 
 const mapStateToProps = (state: AppStateType) => ({
-    isAuth: state.auth.isAuth
+    isAuth: getIsAuth(state)
 })
 const connector = connect(mapStateToProps, {login})
 export default connector(Login);

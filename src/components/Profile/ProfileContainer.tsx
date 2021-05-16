@@ -2,10 +2,12 @@ import React, {ComponentType} from 'react';
 import {Profile} from './Profile';
 import {connect, ConnectedProps} from 'react-redux';
 import {AppStateType} from '../../redux/redux-store';
-import {getStatus, getUserProfile, updateStatus} from '../../redux/profile-reducer';
+import {getStatusTC, getUserProfile, updateStatus} from '../../redux/profile-reducer';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import {withAuthRedirect} from '../../hoc/withAuthRedirect';
 import {compose} from 'redux';
+import {getProfile, getStatus} from '../../redux/profile-selectors';
+import {getAuthorizedUserId, getIsAuth} from '../../redux/auth-selectors';
 
 class ProfileContainer extends React.Component<ProfilePropsType> {
     componentDidMount() {
@@ -33,13 +35,13 @@ class ProfileContainer extends React.Component<ProfilePropsType> {
 }
 
 const mapStateToProps = (state: AppStateType) => ({
-    profile: state.profilePage.profile,
-    status: state.profilePage.status,
-    authorizedUserId: state.auth.userId,
-    isAuth: state.auth.isAuth
+    profile: getProfile(state),
+    status: getStatus(state),
+    authorizedUserId: getAuthorizedUserId(state),
+    isAuth: getIsAuth(state)
 })
 
-const connector = connect(mapStateToProps, {getUserProfile, getStatus, updateStatus})
+const connector = connect(mapStateToProps, {getUserProfile, getStatus: getStatusTC, updateStatus})
 export default compose<ComponentType>(connector, withRouter, withAuthRedirect)(ProfileContainer)
 //types
 export type PropsType = ConnectedProps<typeof connector>
