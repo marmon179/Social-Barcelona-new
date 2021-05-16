@@ -1,12 +1,12 @@
 import React from 'react';
 import {Posts} from './Posts';
-import {addPost, InitialStateTypeProfile} from '../../../redux/profile-reducer';
+import {addPost} from '../../../redux/profile-reducer';
 import {connect, ConnectedProps} from 'react-redux';
 import {AppStateType} from '../../../redux/redux-store';
 import {Dispatch} from 'redux';
 
 
-const mapStateProps = (state: AppStateType): MapStatePropsType => {
+const mapStateProps = (state: AppStateType) => {
     return {
         dialogsData: state.profilePage.dialogsData,
         profile: state.profilePage.profile,
@@ -24,5 +24,4 @@ const connector = connect(mapStateProps, mapDispatchToProps)
 export const PostsContainer = connector(Posts)
 //types
 export type PostsPropsType = ConnectedProps<typeof connector>
-type MapStatePropsType = InitialStateTypeProfile
 

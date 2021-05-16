@@ -2,8 +2,7 @@ import React, {ComponentType} from 'react';
 import {connect, ConnectedProps} from 'react-redux';
 import {
     followSuccess,
-    getUsers,
-    InitialStateTypeUser,
+    requestUsers,
     setCurrentPage,
     toggleFollowingProgress,
     unfollowSuccess
@@ -12,6 +11,13 @@ import {AppStateType} from '../../redux/redux-store';
 import {Users} from './Users';
 import Preloader from '../common/Preloader/Preloader';
 import {compose} from 'redux';
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount, getUsers
+} from '../../redux/users-selectors';
 
 
 class UsersContainer extends React.Component<UsersPropsType> {
@@ -42,24 +48,35 @@ class UsersContainer extends React.Component<UsersPropsType> {
     }
 }
 
-const mapStateToProps = (state: AppStateType): MapStatePropsType => {
+// const mapStateToProps = (state: AppStateType) => {
+//     return {
+//         users: state.userPage.users,
+//         pageSize: state.userPage.pageSize,
+//         totalUsersCount: state.userPage.totalUsersCount,
+//         currentPage: state.userPage.currentPage,
+//         isFetching: state.userPage.isFetching,
+//         followingInProgress: state.userPage.followingInProgress
+//
+//     }
+// }
+
+const mapStateToProps = (state: AppStateType) => {
     return {
-        users: state.userPage.users,
-        pageSize: state.userPage.pageSize,
-        totalUsersCount: state.userPage.totalUsersCount,
-        currentPage: state.userPage.currentPage,
-        isFetching: state.userPage.isFetching,
-        followingInProgress: state.userPage.followingInProgress
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state)
 
     }
 }
 const connector = connect(mapStateToProps, {
     follow: followSuccess, unfollow: unfollowSuccess,
-    setCurrentPage, toggleFollowingProgress, getUsers
+    setCurrentPage, toggleFollowingProgress, getUsers: requestUsers
 })
 export default compose<ComponentType>(connector)(UsersContainer)
 //types
-type MapStatePropsType = InitialStateTypeUser
 export type UsersPropsType = ConnectedProps<typeof connector>
 
 

@@ -13,17 +13,14 @@ class HeaderContainer extends React.Component<HeaderPropsType> {
     }
 }
 
-const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
+const mapStateToProps = (state: AppStateType) => ({
     isAuth: state.auth.isAuth,
     login: state.auth.login,
 })
 
-const connector = connect(mapStateToProps, { logout})
+const connector = connect(mapStateToProps, {logout})
 
 export default connector(HeaderContainer);
 //types
 export type HeaderPropsType = ConnectedProps<typeof connector>
-type MapStatePropsType = {
-    isAuth: boolean
-    login: null
-}
+
