@@ -15,7 +15,9 @@ export const Posts = (props: PostsPropsType) => {
             <div className={styles.wrapperDialogs}>
                 {elementsDialogs}
             </div>
-            <AddMessageFormRedux onSubmit={onAddPost}/>
+            <div className={styles.form}>
+                <AddMessageFormRedux onSubmit={onAddPost}/>
+            </div>
         </div>
     )
 };

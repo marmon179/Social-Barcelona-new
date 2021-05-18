@@ -29,7 +29,9 @@ export const Dialogs = (props: DialogsPropsType) => {
                         {elementsMessages}
                     </div>
                 </div>
-                <AddMessageFormRedux onSubmit={addNewMessage}/>
+                <div className={styles.messageForm}>
+                    <AddMessageFormRedux onSubmit={addNewMessage}/>
+                </div>
             </div>
         </div>
     )

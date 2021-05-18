@@ -16,7 +16,7 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
             <div>
                 <Field placeholder={'Email'} name={'email'}
                        component={Input} validate={[required]}
-                        className={style.superInput}
+                       className={style.superInput}
                 />
             </div>
             <div>
@@ -48,7 +48,7 @@ const Login = (props: LoginPropsType) => {
     }
 
     if (props.isAuth) {
-        return <Redirect to={'/profile'}/>
+        return <Redirect to={'/users'}/>
     }
 
     return <div>
