@@ -1,6 +1,6 @@
 import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 import React from 'react';
-import styles from '../Posts.module.css';
+import styles from './AddNewPostForm.module.scss';
 import {maxLengthCreator, required} from '../../../../utils/validators/validators';
 import {Textarea} from '../../../common/FormsControls/FormsControls';
 

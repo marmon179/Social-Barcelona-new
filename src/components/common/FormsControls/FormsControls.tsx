@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './FormsControls.module.css'
+import styles from './FormsControls.module.scss'
 
 type TextareaPropsType = {
     input: string

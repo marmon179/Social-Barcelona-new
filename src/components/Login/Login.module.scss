@@ -1,0 +1,89 @@
+.superInput {
+  margin: 10px;
+  width: 200px;
+  border: 2px solid #dadada;
+  border-radius: 7px;
+  font-size: 20px;
+  padding: 5px;
+
+  &:focus {
+    outline: none;
+    border-color: #154284;
+    box-shadow: 0 0 10px #154284;
+  }
+}
+
+
+.checkbox {
+  appearance: none;
+
+  width: 20px;
+  height: 20px;
+
+  margin-left: 10px;
+  background: #6486c9;
+  cursor: pointer;
+
+  &:checked {
+    appearance: none;
+
+    background: url('../../Img/cgedked.jpg') 0 0/20px 20px no-repeat;
+
+  }
+}
+
+
+.button {
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  min-width: 64px;
+  letter-spacing: 0.02857em;
+  position: relative;
+  background-color: #a01c30;
+  border: none;
+  color: #fff;
+  padding: 6px 16px;
+  width: 110px;
+  transition-duration: 0.4s;
+  overflow: hidden;
+  box-shadow: 0 5px 15px #193047;
+  border-radius: 4px;
+  margin: 10px;
+
+  &:hover {
+    background: #fff;
+    box-shadow: 0 2px 10px 5px #a01c30;
+    color: #000;
+  }
+
+  &:after {
+    content: "";
+    background: #a01c30;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+
+  &:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+

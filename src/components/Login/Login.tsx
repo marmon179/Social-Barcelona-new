@@ -6,7 +6,7 @@ import {connect, ConnectedProps} from 'react-redux';
 import {login} from '../../redux/auth-reducer';
 import {Redirect} from 'react-router-dom';
 import {AppStateType} from '../../redux/redux-store';
-import style from '../Login/Login.module.css'
+import style from './Login.module.scss'
 import {getIsAuth} from '../../redux/auth-selectors';
 
 

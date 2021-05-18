@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Users.module.css';
+import s from './Users.module.scss';
 import userPhoto from '../../assets/images/user-male.png';
 import {InitialStateTypeUser} from '../../redux/users-reducer';
 import {NavLink} from 'react-router-dom';
@@ -24,19 +24,16 @@ export const Users = (props: UsersType) => {
 
         </div>
 
-        <div className={s.wrapper}>{
-            props.users.users.map((u: any) => <div key={u.id}>
+        <div>{
+            props.users.users.map((u: any) => <div key={u.id} className={s.wrapper}>
 
-                <div>
-                    <NavLink to={'/profile/' + u.id}>
-                        <img src={u.photos.small != null ? u.photos.small : userPhoto} alt={'image'}
-                             className={s.userPhoto}/>
-                    </NavLink>
-                    <div>
-                        <div className={s.name}>{u.name}</div>
-                        <div className={s.status}>{u.status}</div>
-                    </div>
-
+                <NavLink to={'/profile/' + u.id}>
+                    <img src={u.photos.small != null ? u.photos.small : userPhoto} alt={'image'}
+                         className={s.userPhoto}/>
+                </NavLink>
+                <div className={s.wrapperContent}>
+                    <div className={s.name}>{u.name}</div>
+                    <div className={s.status}>{u.status}</div>
 
                     {u.followed
                         ? <button disabled={props.followingInProgress.some((id: number) => id === u.id)}
@@ -46,7 +43,7 @@ export const Users = (props: UsersType) => {
                                   }}>UnFollow</button>
 
                         : <button disabled={props.followingInProgress.some((id: number) => id === u.id)}
-                                 className={s.button}
+                                  className={s.button}
                                   onClick={() => {
                                       props.follow(u.id)
                                   }}>Follow</button>}

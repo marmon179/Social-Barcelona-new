@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Profile.module.css'
+import styles from './Profile.module.scss'
 import {PostsContainer} from './Posts/PostsContainer';
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import Preloader from '../common/Preloader/Preloader';

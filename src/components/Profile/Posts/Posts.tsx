@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Posts.module.css';
+import styles from './Posts.module.scss';
 import Post from './Post/Post';
 import {AddMessageFormRedux} from './AddNewPostForm/AddNewPostForm';
 import {PostsPropsType} from './PostsContainer';

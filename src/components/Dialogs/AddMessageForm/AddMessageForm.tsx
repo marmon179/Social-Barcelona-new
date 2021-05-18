@@ -1,6 +1,6 @@
 import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 import React from 'react';
-import styles from '../Dialogs.module.css';
+import styles from './AddMessageForm.module.scss';
 import {Textarea} from '../../common/FormsControls/FormsControls';
 import {maxLengthCreator, required} from '../../../utils/validators/validators';
 

@@ -1,0 +1,11 @@
+.postList {
+  display: flex;
+  flex-direction: column;
+
+  .wrapperDialogs {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+
+  }
+}

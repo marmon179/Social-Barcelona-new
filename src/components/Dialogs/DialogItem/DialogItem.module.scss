@@ -1,19 +1,19 @@
 .dialogName {
-    display: flex;
+  display: flex;
+  padding: 10px 10px 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  margin: 10px 0 10px 0;
 
-    padding: 10px 10px 10px 20px;
-    text-decoration: none;
-    color: #fff;
-    margin: 10px 0 10px 0;
-}
-
-.dialogName:hover {
+  &:hover {
     background-color: rgba(74, 118, 168, 0.27);
     border-radius: 5px 5px 5px 5px;
-}
+  }
 
-.activeLink {
+  .activeLink {
     background-color: rgba(74, 118, 168, 0.27);
     border-radius: 5px 5px 5px 5px;
+  }
 }
+
 

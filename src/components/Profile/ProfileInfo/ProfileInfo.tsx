@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ProfileInfo.module.css'
+import styles from './ProfileInfo.module.scss'
 import {ProfileStatus} from './ProfileStatus';
 
 

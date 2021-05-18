@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import styles from './DialogItem.module.css';
+import styles from './DialogItem.module.scss';
 
 
 export const DialogItem: React.FC<DialogsType> = (props) => {
