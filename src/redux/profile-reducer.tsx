@@ -5,8 +5,6 @@ import {AppThunk} from './redux-store';
 const initialState = {
     dialogsData: [
         {id: 1, message: 'Hello people!!!!'},
-        {id: 2, message: 'How are you?'},
-        {id: 3, message: 'Very nice!!!'},
     ],
     profile: null,
     status: ''
@@ -16,7 +14,7 @@ export const profileReducer = (state: InitialStateTypeProfile = initialState, ac
     switch (action.type) {
         case 'ADD-POST':
             const newPost = {
-                id: 4,
+                id: 2,
                 message: action.newMessageBody
             };
             return {

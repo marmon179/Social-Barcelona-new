@@ -1,18 +1,32 @@
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background-image: url('https://www.underconsideration.com/brandnew/archives/fc_barcelona_patterns_01.jpg');
-
+  display: grid;
   grid-area: header;
   grid-template-columns: 9fr 3fr;
+  grid-template-rows: 1fr 0;
+  grid-template-areas:
+    'image loginBlock'
+      'progress progress ';
 
-  & img {
-    width: 60px;
-    margin-left: 10px;
+
+  .image {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    grid-area: image;
+
+    & img {
+      width: 60px;
+      margin-left: 10px;
+    }
   }
 
+
   .loginBlock {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    grid-area: loginBlock;
     margin-right: 10px;
 
     & a {
@@ -20,6 +34,7 @@
     }
 
     .login {
+      grid-area: login;
       margin-right: 5px;
       font-family: Arial;
       font-weight: 400;
@@ -82,6 +97,10 @@
         outline: 0;
       }
     }
+  }
+
+  .progress {
+    grid-area: progress;
   }
 }
 

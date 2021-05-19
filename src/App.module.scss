@@ -3,14 +3,13 @@
   width: 1280px;
   margin: 0 auto;
 
-  grid-gap: 20px;
+  grid-gap: 1rem;
   grid-template-areas:
     'header header'
     'navbar content';
 
-  grid-template-rows: 80px 1fr;
   grid-template-columns: 30% 70%;
-
+  grid-template-rows: 80px  1fr;
 }
 
 

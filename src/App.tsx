@@ -12,6 +12,7 @@ import {compose} from 'redux';
 import {initializeApp} from './redux/app-reducer';
 import {AppStateType} from './redux/redux-store';
 import Preloader from './components/common/Preloader/Preloader';
+import LinearIndeterminate from './components/common/progress/Progress';
 
 
 class App extends React.Component<AppPropsType> {

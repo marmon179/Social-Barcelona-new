@@ -2,13 +2,18 @@
   display: flex;
   flex-direction: column;
 
+
   .wrapperDialogs {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-
+    border: 1px solid black;
+    width: 97.5%;
+    height: 30vh;
+    overflow-y: auto;
+    margin: 10px;
   }
-  .form{
+
+  .form {
     display: flex;
     justify-content: center;
   }
