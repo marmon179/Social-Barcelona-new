@@ -8,7 +8,7 @@ const initialState = {
 
 export const appReducer = (state: InitialStateTypeApp = initialState, action: AppReducerActionType): InitialStateTypeApp => {
     switch (action.type) {
-        case 'INITIALIZED_SUCCESS':
+        case 'APP/INITIALIZED_SUCCESS':
             return {
                 ...state,
                 initialized: true
@@ -19,7 +19,7 @@ export const appReducer = (state: InitialStateTypeApp = initialState, action: Ap
 }
 //actions
 export const initializedSuccess = () => ({
-    type: 'INITIALIZED_SUCCESS',
+    type: 'APP/INITIALIZED_SUCCESS',
 } as const)
 
 //thunks

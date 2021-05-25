@@ -14,7 +14,7 @@ const initialState = {
 
 export const dialogsReducer = (state: InitialStateTypeDialogs = initialState, action: DialogsActionsTypes): InitialStateTypeDialogs => {
     switch (action.type) {
-        case 'ADD_POST_DIALOG':
+        case 'DIALOGS/ADD_POST_DIALOG':
             const newPost = {
                 id: 4,
                 message: action.newMessageBody
@@ -27,7 +27,7 @@ export const dialogsReducer = (state: InitialStateTypeDialogs = initialState, ac
     return state
 }
 //actions
-export const addPostDialogAC = (newMessageBody: string) => ({type: 'ADD_POST_DIALOG', newMessageBody} as const)
+export const addPostDialogAC = (newMessageBody: string) => ({type: 'DIALOGS/ADD_POST_DIALOG', newMessageBody} as const)
 //types
 export type DialogsActionsTypes = ReturnType<typeof addPostDialogAC>
 export type InitialStateTypeDialogs = typeof initialState
